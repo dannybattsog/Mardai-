@@ -61,7 +61,7 @@ export const FindYourPathModal: React.FC<FindYourPathModalProps> = ({
         tagline: 'Reconnect. Refocus. Move forward.',
         pageId: 'basecamp' as PageId,
         icon: Mountain,
-        reason: 'You need an immersive pause away from daily responsibilities. Basecamp provides a 2.5-day mountain experience for meaningful reflection, career alignment, and brotherhood.'
+        reason: 'You need an immersive pause away from daily responsibilities. Basecamp provides a 2-day mountain experience for meaningful reflection, career alignment, and brotherhood.'
       };
     }
     if (userRole === 'professional' || transitionType === 'career-pivot' || transitionType === 'leadership-step') {
@@ -74,11 +74,11 @@ export const FindYourPathModal: React.FC<FindYourPathModalProps> = ({
       };
     }
     return {
-      title: 'Mardai Beyond & Community',
-      tagline: 'Ideas worth applying.',
-      pageId: 'beyond' as PageId,
+      title: 'Mardai Series & Community',
+      tagline: 'Five collections. 500 models. One philosophy.',
+      pageId: 'series' as PageId,
       icon: BookOpen,
-      reason: 'Start with our foundational mental models, systems frameworks, and community learning sessions.'
+      reason: 'Start with our foundational 500 mental models and practical thinking tools, beginning with Mardai Human Systems (100 models).'
     };
   };
 

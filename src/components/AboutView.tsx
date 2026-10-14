@@ -13,7 +13,11 @@ import {
   CheckCircle2,
   Globe2,
   BookOpen,
-  Briefcase
+  Briefcase,
+  Users,
+  Check,
+  AlertTriangle,
+  HeartHandshake
 } from 'lucide-react';
 
 interface AboutViewProps {
@@ -25,187 +29,183 @@ export const AboutView: React.FC<AboutViewProps> = ({
   onNavigate,
   onOpenBasecampReview
 }) => {
-  const beliefs = [
+  const principles = [
     {
-      title: 'Clarity before action.',
-      description: 'Activity without orientation is just exhaustion. Before rushing into execution or career shifts, define where you are and what truly matters.'
+      num: '01',
+      title: 'Grounded practical truth over motivational hype',
+      description: 'We reject empty cheerleading, toxic positivity, and performative posturing. Lasting human development begins with confronting reality honestly as it actually exists.'
     },
     {
-      title: 'Frameworks should be useful, not impressive.',
-      description: 'We avoid academic jargon and theoretical posturing. If a mental model cannot be drawn on a napkin and applied the next morning, we do not teach it.'
+      num: '02',
+      title: 'Frameworks over open-ended advice',
+      description: 'Vague wisdom evaporates by Monday morning. We provide structured systems, decision matrices, and napkin-simple models that can be immediately applied.'
     },
     {
-      title: 'People grow faster through meaningful relationships.',
-      description: 'Growth is accelerated in high-trust, low-ego environments where peers challenge each other honestly without superficial competition.'
+      num: '03',
+      title: 'Action over theory',
+      description: 'Insight without behavioral change is merely entertainment. True learning is demonstrated when your daily routines, boundaries, and commitments visibly change.'
     },
     {
-      title: 'Self-awareness is valuable only when translated into action.',
-      description: 'Insight without behavioral change is just entertainment. Every reflection exercise must culminate in measurable, disciplined execution.'
+      num: '04',
+      title: 'Human connection over isolated self-help',
+      description: 'No one builds meaningful progress completely in isolation. Growth is dramatically accelerated when supported by high-trust relationships, candid peers, and shared accountability.'
     },
     {
-      title: 'Technology should increase human capability, not replace human judgment.',
-      description: 'We leverage AI and modern tools to eliminate drudgery and multiply leverage, while fiercely protecting human discernment, ethics, and empathy.'
-    },
-    {
-      title: 'Progress compounds.',
-      description: 'Lasting transformation is rarely the result of a single explosive breakthrough. It is the steady accumulation of small, intentional, designed decisions.'
-    },
-    {
-      title: 'Learning should change behaviour.',
-      description: 'The test of true learning is not what you know, but how you operate under pressure, how you lead teams, and how you design your next move.'
-    },
-    {
-      title: 'Community creates opportunity.',
-      description: 'The highest-leverage career inflection points and organizational breakthroughs happen through warm relationships, trust, and shared accountability.'
+      num: '05',
+      title: 'Long-term development over quick fixes',
+      description: 'Compounding is the most powerful force in human development. We focus on durable, deliberate progress across years, not hollow overnight transformations.'
     }
+  ];
+
+  const frictionPoints = [
+    { label: 'Fragmented Attention', text: 'Constant notification pings, algorithmic feeds, and digital interruptions shatter cognitive depth.' },
+    { label: 'Lack of Reflection', text: 'Days blend together in reactive firefighting, leaving zero time to question direction or purpose.' },
+    { label: 'Surface-Level Connection', text: 'Networking has become transactional and performative, while authentic, vulnerable friendships erode.' },
+    { label: 'Disconnected Information', text: 'Endless podcasts and articles flood our minds, but lack an integrated operating system to connect them.' },
+    { label: 'Constant Busyness', text: 'Confusing activity with progress, people exhaust themselves working hard without moving forward.' },
+    { label: 'Lack of Structured Frameworks', text: 'People rely on willpower rather than environmental systems and decision models designed to support them.' }
+  ];
+
+  const mardaiPOV = [
+    { point: 'Honesty About Reality', desc: 'Accepting your true starting baseline across all 5 dimensions without illusion or shame.' },
+    { point: 'Useful Frameworks', desc: 'Proven mental models and systems that turn abstract ambiguity into manageable components.' },
+    { point: 'Small Practical Actions', desc: 'Designing low-friction daily micro-habits and 90-day sprints that reliably compound.' },
+    { point: 'Human Connection', desc: 'Surrounding yourself with grounded peers who provide constructive candor and mutual accountability.' },
+    { point: 'Ongoing Reflection', desc: 'Regular structured pauses—monthly check-ins and retreats—to calibrate direction before the next climb.' }
   ];
 
   return (
     <div className="pt-24 pb-20 bg-[#F7F5F2]">
       
-      {/* Hero Section with Bold Typography */}
+      {/* Hero Section */}
       <section className="py-16 md:py-24 bg-[#F7F5F2] border-b border-[#1A1A1A]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 mb-6">
               <span className="text-[10px] uppercase tracking-[0.25em] font-black text-[#2D4F3C]">
-                Origin & Purpose
+                THE MARDAI MISSION
               </span>
               <span className="w-1 h-1 bg-[#2D4F3C] rounded-full"></span>
             </div>
 
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight text-[#1A1A1A] leading-[0.9] mb-6">
-              Why Mardai exists.
+              Human development should not be left to chance.
             </h1>
 
-            <p className="text-xl font-light text-[#1A1A1A]/90 leading-relaxed max-w-2xl">
-              Many people are capable, experienced, hardworking, and ambitious, yet still find themselves operating in survival mode.
+            <p className="text-xl sm:text-2xl font-light text-[#1A1A1A] leading-relaxed mb-6 font-editorial italic">
+              “Helping people develop deliberately through practical frameworks, structured systems, meaningful experiences, human connection, reflection, and community.”
+            </p>
+
+            <p className="text-sm sm:text-base text-[#1A1A1A]/80 leading-relaxed max-w-2xl">
+              Many people are capable, hardworking, experienced, and ambitious, yet find themselves operating in survival mode—reacting to endless demands rather than deliberately authoring their lives. Mardai exists to provide the architecture for what comes next.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Founder Story & The Core Problem */}
+      {/* WHY MODERN LIFE MAKES IT HARD (Verbatim from Section 14) */}
       <section className="py-20 bg-white border-b border-[#1A1A1A]/10">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-8">
-            
-            <div className="p-8 sm:p-12 bg-[#F7F5F2] border border-[#1A1A1A]/15 space-y-6">
-              <span className="text-[10px] uppercase tracking-[0.25em] font-black text-[#2D4F3C] block">
-                The Foundational Observation
-              </span>
-              <p className="text-lg sm:text-xl text-[#1A1A1A]/90 leading-relaxed">
-                Every day, talented professionals and dedicated leaders find themselves constantly responding to work demands, bills, responsibilities, immigration complexities, career uncertainty, family obligations, rapid technological changes, and endless noise.
-              </p>
-              <p className="text-xl sm:text-2xl font-light text-[#1A1A1A] leading-snug font-editorial italic border-l-2 border-[#C27339] pl-6 my-6">
-                “What becomes possible when people have the space, frameworks, relationships, and support to stop reacting and deliberately build what comes next?”
-              </p>
-              <p className="text-sm text-[#1A1A1A]/80 leading-relaxed">
-                Mardai was founded around that exact question. We build intentional development environments—through educational media, career accelerators, mountain retreats, organizational workshops, and an enduring community—to replace reactive survival with intentional progress by design.
-              </p>
-            </div>
-
-            {/* Principal Advisor Profile: Danny Battsog */}
-            <div className="p-8 sm:p-12 bg-white border border-[#1A1A1A]/15 space-y-8">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#1A1A1A]/10">
-                <div>
-                  <span className="text-[10px] uppercase tracking-[0.25em] font-black text-[#2D4F3C] block mb-1">
-                    Leadership & Advisory
-                  </span>
-                  <h2 className="text-3xl font-black tracking-tight text-[#1A1A1A]">
-                    Danny Battsog
-                  </h2>
-                  <p className="text-xs font-mono font-bold text-[#C27339] mt-0.5">
-                    Principal Advisor & Founder, Mardai
-                  </p>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-[#1A1A1A]/60">
-                  <Globe2 className="w-4 h-4 text-[#2D4F3C]" />
-                  <span>Calgary, AB • Cross-Industry Facilitator</span>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-                <div className="md:col-span-8 space-y-4 text-xs sm:text-sm text-[#1A1A1A]/80 leading-relaxed">
-                  <p>
-                    Danny Battsog is an HR and people professional, learning and development practitioner, career development facilitator, and systems-thinking enthusiast. With a deep background in enterprise LMS architectures, HR technology implementations, and adult learning design, Danny approaches human development with engineer-like precision and human warmth.
-                  </p>
-                  <p>
-                    As an international professional and immigrant who has navigated complex career inflection points across different countries, regulatory environments, and industries, Danny brings a grounded, highly empathetic perspective to career strategy and professional transitions.
-                  </p>
-                  <p>
-                    Rather than relying on inflated motivational tropes or hollow success formulas, Danny’s work is grounded in a simple conviction: <strong>professional and personal development should lead directly to practical, measurable action.</strong>
-                  </p>
-                </div>
-
-                <div className="md:col-span-4 bg-[#F7F5F2] p-6 border border-[#1A1A1A]/10 space-y-3">
-                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#1A1A1A] block">
-                    Core Practice Areas
-                  </span>
-                  <ul className="space-y-2 text-xs text-[#1A1A1A]/70">
-                    <li className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#2D4F3C]"></span>
-                      <span>HR & People Strategy</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#C27339]"></span>
-                      <span>L&D & Facilitation</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#2D4F3C]"></span>
-                      <span>LMS & HR Technology</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#C27339]"></span>
-                      <span>Systems Thinking</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#2D4F3C]"></span>
-                      <span>Executive Retreats</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* What Mardai Believes */}
-      <section className="py-20 bg-[#F7F5F2] border-b border-[#1A1A1A]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-12">
             <span className="text-[10px] uppercase tracking-[0.25em] font-black text-[#2D4F3C] block mb-2">
-              Our Operating Philosophy
+              The Modern Problem
             </span>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-[#1A1A1A]">
-              What Mardai believes.
+              Why deliberate development is so difficult today.
             </h2>
-            <p className="text-xs text-[#1A1A1A]/70 mt-2">
-              Eight foundational principles that govern our curriculum, retreat design, and advisory engagements.
+            <p className="text-sm text-[#1A1A1A]/70 mt-3">
+              It is not a lack of personal desire or discipline. Modern environments are structurally organized to prevent deep reflection and sustained personal agency.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {beliefs.map((item, idx) => (
-              <div key={idx} className="p-7 bg-white border border-[#1A1A1A]/10 space-y-3 flex flex-col justify-between hover:border-[#1A1A1A]/30 transition-colors">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {frictionPoints.map((item, idx) => (
+              <div key={idx} className="p-7 bg-[#F7F5F2] border border-[#1A1A1A]/10 space-y-3">
+                <span className="text-xs font-mono font-bold text-[#C27339]">
+                  FRICTION 0{idx + 1}
+                </span>
+                <h3 className="text-base font-black text-[#1A1A1A]">
+                  {item.label}
+                </h3>
+                <p className="text-xs text-[#1A1A1A]/70 leading-relaxed">
+                  {item.text}
+                </p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* THE MARDAI POINT OF VIEW */}
+      <section className="py-20 bg-[#F7F5F2] border-b border-[#1A1A1A]/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-5 space-y-6">
+              <span className="text-[10px] uppercase tracking-[0.25em] font-black text-[#2D4F3C] block">
+                The Mardai Stance
+              </span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-[#1A1A1A] leading-tight">
+                Our point of view on human growth.
+              </h2>
+              <p className="text-base text-[#1A1A1A]/80 leading-relaxed">
+                Development is not an accident. Nor is it a mystical flash of lightning. Real, sustainable human development requires five core ingredients working in continuous harmony.
+              </p>
+            </div>
+
+            <div className="lg:col-span-7 space-y-3">
+              {mardaiPOV.map((p, idx) => (
+                <div key={idx} className="p-5 bg-white border border-[#1A1A1A]/10 flex items-start gap-4">
+                  <span className="w-6 h-6 bg-[#2D4F3C] text-white flex items-center justify-center text-xs font-mono font-bold shrink-0 mt-0.5">
+                    {idx + 1}
+                  </span>
+                  <div>
+                    <h3 className="text-sm font-bold text-[#1A1A1A]">
+                      {p.point}
+                    </h3>
+                    <p className="text-xs text-[#1A1A1A]/70 mt-1 leading-relaxed">
+                      {p.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* THE MARDAI OPERATING VALUES (Verbatim from Section 14) */}
+      <section className="py-20 bg-white border-b border-[#1A1A1A]/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="max-w-3xl mb-12">
+            <span className="text-[10px] uppercase tracking-[0.25em] font-black text-[#2D4F3C] block mb-2">
+              Operating Values
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-[#1A1A1A]">
+              The Five Mardai Principles
+            </h2>
+            <p className="text-xs sm:text-sm text-[#1A1A1A]/70 mt-2">
+              The foundational standards that govern every framework we design, every retreat we host, and every interaction we facilitate.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {principles.map((item, idx) => (
+              <div key={idx} className="p-8 bg-[#F7F5F2] border border-[#1A1A1A]/10 space-y-3 flex flex-col justify-between">
                 <div>
                   <span className="text-xs font-mono font-bold text-[#C27339] block mb-2">
-                    0{idx + 1}
+                    PRINCIPLE {item.num}
                   </span>
                   <h3 className="text-base font-black text-[#1A1A1A] leading-snug">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-[#1A1A1A]/70 leading-relaxed mt-2">
+                  <p className="text-xs text-[#1A1A1A]/70 leading-relaxed mt-3">
                     {item.description}
                   </p>
-                </div>
-                <div className="pt-3 border-t border-[#1A1A1A]/10">
-                  <span className="text-[9px] font-mono uppercase tracking-widest text-[#2D4F3C] font-bold">
-                    Core Principle
-                  </span>
                 </div>
               </div>
             ))}
@@ -214,104 +214,141 @@ export const AboutView: React.FC<AboutViewProps> = ({
         </div>
       </section>
 
-      {/* The 5-Part Integrated Ecosystem */}
+      {/* ORIGIN STORY: THE EVOLUTION OF MARDAI */}
+      <section className="py-20 bg-[#F7F5F2] border-b border-[#1A1A1A]/10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          
+          <div className="p-8 sm:p-12 bg-white border border-[#1A1A1A]/15 space-y-6">
+            <span className="text-[10px] uppercase tracking-[0.25em] font-black text-[#2D4F3C] block">
+              Origin & Evolution
+            </span>
+            
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-[#1A1A1A]">
+              From coaching and retreats to a human development company.
+            </h2>
+            
+            <div className="space-y-4 text-xs sm:text-sm text-[#1A1A1A]/80 leading-relaxed">
+              <p>
+                Mardai began with a deep passion for helping individuals unlock potential through high-touch career coaching and immersive mountain retreats in Alberta. Over years of working closely with executives, career changers, fathers, founders, and professionals navigating major transitions, a clear pattern emerged:
+              </p>
+              
+              <blockquote className="p-6 bg-[#F7F5F2] border-l-2 border-[#C27339] font-editorial italic text-base sm:text-lg text-[#1A1A1A] leading-relaxed my-4">
+                “Career success cannot be separated from health, personal direction, financial peace of mind, or authentic human connection. A breakthrough in one area inevitably touches all the others.”
+              </blockquote>
+              
+              <p>
+                Coaching sessions alone were too narrow. Mountain retreats alone were too ephemeral if disconnected from everyday routines. Isolated self-help books left people overwhelmed by fragmented information without a cohesive system.
+              </p>
+              
+              <p>
+                This realization sparked the evolution of Mardai into <strong>a Human Connection and Development Company</strong>. Today, Mardai brings all of these elements into a single coherent philosophy: <em>Learn continuously</em> through practical mental models and card decks, <em>Grow intentionally</em> through disciplined personal development programs, and <em>Connect deeply</em> through transformative retreats, city events, and enduring community.
+              </p>
+            </div>
+
+            {/* Founder Profile */}
+            <div className="pt-8 border-t border-[#1A1A1A]/10">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <h3 className="text-xl font-black text-[#1A1A1A]">
+                    Danny Battsog
+                  </h3>
+                  <p className="text-xs font-mono font-bold text-[#C27339]">
+                    Principal Advisor & Founder, Mardai
+                  </p>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-[#1A1A1A]/60">
+                  <Globe2 className="w-4 h-4 text-[#2D4F3C]" />
+                  <span>Calgary, AB • Human Development Practitioner</span>
+                </div>
+              </div>
+
+              <p className="mt-4 text-xs text-[#1A1A1A]/75 leading-relaxed">
+                Danny is an HR and people professional, adult learning and development practitioner, and systems-thinking facilitator. As an international professional who has navigated career crossroads across borders and industries, Danny brings a grounded, warm, and highly pragmatic approach to human development.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* THE 4-PILLAR JOURNEY NAVIGATION */}
       <section className="py-20 bg-white border-b border-[#1A1A1A]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <span className="text-[10px] uppercase tracking-[0.25em] font-black text-[#2D4F3C] block mb-2">
-              The Mardai Continuum
+              Explore the Ecosystem
             </span>
             <h2 className="text-3xl font-extrabold tracking-tight text-[#1A1A1A]">
-              One coherent operating system across individual and organizational progress.
+              The Four-Pillar Progression
             </h2>
           </div>
 
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div 
-              onClick={() => onNavigate('beyond')}
-              className="p-6 bg-[#F7F5F2] hover:bg-white border border-[#1A1A1A]/10 transition-all cursor-pointer flex items-center justify-between group"
+              onClick={() => onNavigate('series')}
+              className="p-6 bg-[#F7F5F2] hover:bg-white border border-[#1A1A1A]/10 transition-all cursor-pointer flex flex-col justify-between group"
             >
               <div>
-                <span className="text-[10px] font-mono font-bold text-[#2D4F3C] uppercase tracking-wider block">01. Educational Media</span>
-                <h3 className="text-lg font-bold text-[#1A1A1A] group-hover:text-[#2D4F3C] transition-colors">Mardai Beyond</h3>
-                <p className="text-xs text-[#1A1A1A]/70">Practical frameworks, mental models, and bi-weekly digests.</p>
+                <span className="text-[10px] font-mono font-bold text-[#2D4F3C] uppercase tracking-wider block mb-1">01 — LEARN</span>
+                <h3 className="text-base font-black text-[#1A1A1A] group-hover:text-[#2D4F3C] transition-colors">Mardai Series</h3>
+                <p className="text-xs text-[#1A1A1A]/70 mt-2 leading-relaxed">Five collections, 500 practical models, and thinking card decks.</p>
               </div>
-              <ArrowRight className="w-5 h-5 text-[#C27339] group-hover:translate-x-1 transition-transform" />
+              <div className="mt-6 flex items-center gap-1.5 text-xs font-bold text-[#1A1A1A]">
+                <span>Explore Series</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#C27339] group-hover:translate-x-1 transition-transform" />
+              </div>
             </div>
 
             <div 
               onClick={() => onNavigate('breakthrough')}
-              className="p-6 bg-[#F7F5F2] hover:bg-white border border-[#1A1A1A]/10 transition-all cursor-pointer flex items-center justify-between group"
+              className="p-6 bg-[#F7F5F2] hover:bg-white border border-[#1A1A1A]/10 transition-all cursor-pointer flex flex-col justify-between group"
             >
               <div>
-                <span className="text-[10px] font-mono font-bold text-[#C27339] uppercase tracking-wider block">02. Career Accelerator</span>
-                <h3 className="text-lg font-bold text-[#1A1A1A] group-hover:text-[#2D4F3C] transition-colors">Mardai Breakthrough</h3>
-                <p className="text-xs text-[#1A1A1A]/70">Structured 6-week career positioning and sprint accelerator.</p>
+                <span className="text-[10px] font-mono font-bold text-[#C27339] uppercase tracking-wider block mb-1">02 — APPLY</span>
+                <h3 className="text-base font-black text-[#1A1A1A] group-hover:text-[#2D4F3C] transition-colors">Mardai Breakthrough</h3>
+                <p className="text-xs text-[#1A1A1A]/70 mt-2 leading-relaxed">Structured human development program across 5 dimensions.</p>
               </div>
-              <ArrowRight className="w-5 h-5 text-[#C27339] group-hover:translate-x-1 transition-transform" />
+              <div className="mt-6 flex items-center gap-1.5 text-xs font-bold text-[#1A1A1A]">
+                <span>Explore Program</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#C27339] group-hover:translate-x-1 transition-transform" />
+              </div>
             </div>
 
             <div 
               onClick={() => onNavigate('basecamp')}
-              className="p-6 bg-[#F7F5F2] hover:bg-white border border-[#1A1A1A]/10 transition-all cursor-pointer flex items-center justify-between group"
+              className="p-6 bg-[#F7F5F2] hover:bg-white border border-[#1A1A1A]/10 transition-all cursor-pointer flex flex-col justify-between group"
             >
               <div>
-                <span className="text-[10px] font-mono font-bold text-[#2D4F3C] uppercase tracking-wider block">03. Men's Retreat</span>
-                <h3 className="text-lg font-bold text-[#1A1A1A] group-hover:text-[#2D4F3C] transition-colors">Mardai Basecamp</h3>
-                <p className="text-xs text-[#1A1A1A]/70">2.5-day men's executive reset in the Rocky Mountain foothills.</p>
+                <span className="text-[10px] font-mono font-bold text-[#2D4F3C] uppercase tracking-wider block mb-1">03 — EXPERIENCE</span>
+                <h3 className="text-base font-black text-[#1A1A1A] group-hover:text-[#2D4F3C] transition-colors">Mardai Basecamp</h3>
+                <p className="text-xs text-[#1A1A1A]/70 mt-2 leading-relaxed">2-day men's alpine reflection and connection retreat.</p>
               </div>
-              <ArrowRight className="w-5 h-5 text-[#C27339] group-hover:translate-x-1 transition-transform" />
-            </div>
-
-            <div 
-              onClick={() => onNavigate('workshops')}
-              className="p-6 bg-[#F7F5F2] hover:bg-white border border-[#1A1A1A]/10 transition-all cursor-pointer flex items-center justify-between group"
-            >
-              <div>
-                <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block">04. Corporate Training</span>
-                <h3 className="text-lg font-bold text-[#1A1A1A] group-hover:text-[#2D4F3C] transition-colors">Mardai Workshops</h3>
-                <p className="text-xs text-[#1A1A1A]/70">Custom organizational programs for leadership, systems thinking, and AI.</p>
+              <div className="mt-6 flex items-center gap-1.5 text-xs font-bold text-[#1A1A1A]">
+                <span>Explore Retreat</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#C27339] group-hover:translate-x-1 transition-transform" />
               </div>
-              <ArrowRight className="w-5 h-5 text-[#C27339] group-hover:translate-x-1 transition-transform" />
             </div>
 
             <div 
               onClick={() => onNavigate('community')}
-              className="p-6 bg-[#F7F5F2] hover:bg-white border border-[#1A1A1A]/10 transition-all cursor-pointer flex items-center justify-between group"
+              className="p-6 bg-[#F7F5F2] hover:bg-white border border-[#1A1A1A]/10 transition-all cursor-pointer flex flex-col justify-between group"
             >
               <div>
-                <span className="text-[10px] font-mono font-bold text-[#1A1A1A]/60 uppercase tracking-wider block">05. Ongoing Practice</span>
-                <h3 className="text-lg font-bold text-[#1A1A1A] group-hover:text-[#2D4F3C] transition-colors">Mardai Community</h3>
-                <p className="text-xs text-[#1A1A1A]/70">Calgary breakfasts, 90-day pods, and exchange network.</p>
+                <span className="text-[10px] font-mono font-bold text-[#C27339] uppercase tracking-wider block mb-1">04 — BELONG</span>
+                <h3 className="text-base font-black text-[#1A1A1A] group-hover:text-[#2D4F3C] transition-colors">Mardai Community</h3>
+                <p className="text-xs text-[#1A1A1A]/70 mt-2 leading-relaxed">Ongoing gatherings, peer accountability, and alumni continuity.</p>
               </div>
-              <ArrowRight className="w-5 h-5 text-[#C27339] group-hover:translate-x-1 transition-transform" />
+              <div className="mt-6 flex items-center gap-1.5 text-xs font-bold text-[#1A1A1A]">
+                <span>Explore Community</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#C27339] group-hover:translate-x-1 transition-transform" />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-[#1A1A1A] text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white">
-            Ready to assess where you are?
-          </h2>
-          <p className="text-sm font-light text-[#F7F5F2]/80 max-w-xl mx-auto leading-relaxed">
-            Take the complimentary 3-minute Breakthrough Review to audit your 8 core life and career dimensions.
-          </p>
-          <div className="pt-2">
-            <button
-              onClick={onOpenBasecampReview}
-              className="bg-[#2D4F3C] hover:bg-[#3C6D58] text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.15em] transition-all shadow-md inline-flex items-center gap-2"
-            >
-              <span>Take Your Breakthrough Review</span>
-              <ArrowRight className="w-4 h-4 text-[#C27339]" />
-            </button>
-          </div>
         </div>
       </section>
 
     </div>
   );
 };
-

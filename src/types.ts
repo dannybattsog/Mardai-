@@ -1,5 +1,7 @@
 export type PageId = 
   | 'home' 
+  | 'events'
+  | 'series'
   | 'beyond' 
   | 'breakthrough' 
   | 'basecamp' 
@@ -9,8 +11,70 @@ export type PageId =
   | 'insights' 
   | 'contact';
 
+export interface MardaiSeriesDeck {
+  id: string;
+  number: string;
+  title: string;
+  subtitle: string;
+  themeColor: string;
+  badge: string;
+  status: 'coming_soon_first' | 'coming_soon_later' | 'available';
+  statusText: string;
+  purpose: string;
+  description: string;
+  modelCount: number;
+  sampleModels: {
+    name: string;
+    category: string;
+    oneLiner: string;
+  }[];
+  accentHex: string;
+  borderHex: string;
+}
+
+export interface MardaiEvent {
+  id: string;
+  city: 'Calgary' | 'Edmonton' | 'Toronto' | 'Vancouver';
+  eventName: string;
+  subtitle: string;
+  date: string;
+  time: string;
+  venue: string;
+  address: string;
+  description: string;
+  status: 'available' | 'coming_soon' | 'sold_out';
+  ticketPrice?: string;
+  seatsRemaining?: number;
+  image: string;
+  speakers?: {
+    name: string;
+    role: string;
+    organization: string;
+    category: 'Career' | 'Finance & Tax' | 'Business' | 'Future & AI' | 'Community';
+    avatar?: string;
+  }[];
+  pillarsCovered: string[];
+}
+
+export interface EventRegistrationData {
+  eventId: string;
+  city: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone?: string;
+  careerStage: string;
+  industry: string;
+  currentProfessionalSituation: string;
+  mainReasonForAttending: string;
+  priorityTopic: string;
+  referralSource: string;
+  linkedIn?: string;
+  consentUpdates: boolean;
+}
+
 export interface Offering {
-  id: 'beyond' | 'breakthrough' | 'basecamp' | 'workshops' | 'community';
+  id: 'series' | 'beyond' | 'breakthrough' | 'basecamp' | 'workshops' | 'community';
   title: string;
   tagline: string;
   badge: string;
@@ -24,6 +88,14 @@ export interface Offering {
 
 export type InsightCategory = 
   | 'all'
+  | 'self'
+  | 'career'
+  | 'health-habits'
+  | 'money-decisions'
+  | 'relationships'
+  | 'productivity'
+  | 'thinking-systems'
+  | 'whats-next'
   | 'think-better'
   | 'work-better'
   | 'know-yourself'
@@ -38,7 +110,7 @@ export interface InsightItem {
   category: InsightCategory;
   categoryLabel: string;
   readTime: string;
-  format: 'Framework' | 'Article' | 'Case Study' | 'Video & Notes' | 'Tool';
+  format: 'Framework' | 'Article' | 'Case Study' | 'Video & Notes' | 'Tool' | 'Interview' | 'Conversation' | 'Practical Tool' | 'Story';
   summary: string;
   content: string[];
   keyTakeaways: string[];
@@ -94,6 +166,6 @@ export interface WorkshopCategory {
 
 export interface ModalState {
   isOpen: boolean;
-  type: 'basecamp-review' | 'find-path' | 'apply-breakthrough' | 'join-basecamp' | 'book-workshop' | 'framework-view' | 'none';
+  type: 'basecamp-review' | 'find-path' | 'apply-breakthrough' | 'join-basecamp' | 'book-workshop' | 'framework-view' | 'event-register' | 'event-waitlist' | 'none';
   data?: any;
 }

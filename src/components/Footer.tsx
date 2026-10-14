@@ -30,7 +30,7 @@ export const Footer: React.FC<FooterProps> = ({
       onShowToast('Invalid Email', 'Please enter a valid email address.', 'error');
       return;
     }
-    onShowToast('Subscribed to Mardai Beyond', `You'll receive our monthly frameworks and insights at ${newsletterEmail}`, 'success');
+    onShowToast('Subscribed to Mardai Series', `You'll receive our monthly frameworks, mental models, and deck updates at ${newsletterEmail}`, 'success');
     setNewsletterEmail('');
   };
 
@@ -43,82 +43,99 @@ export const Footer: React.FC<FooterProps> = ({
           
           {/* Brand Column (2 cols) */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="flex items-center gap-2">
-              <span className="text-3xl font-black tracking-[-0.04em] text-white">
+            <div className="flex items-center gap-3">
+              <span 
+                style={{ fontFamily: 'Georgia, serif' }}
+                className="text-2xl font-black tracking-[-0.04em] text-[#F7F5F2]"
+              >
                 MARDAI
               </span>
               <span className="w-1.5 h-1.5 bg-[#2D4F3C] rounded-full"></span>
             </div>
 
             <p className="text-xs font-mono uppercase tracking-[0.2em] text-[#C27339]">
-              Progress by design.
+              Human Connection and Development Company
             </p>
 
-            <p className="text-xs leading-relaxed text-[#F7F5F2]/70 max-w-sm">
-              Mardai helps individuals, professionals, teams, and organizations move forward with greater clarity, capability, confidence, and connection.
+            <p className="text-xs leading-relaxed text-[#F7F5F2]/75 max-w-sm">
+              Helping people learn continuously, grow intentionally, and connect deeply through practical thinking tools, mental model card decks, structured experiences, and high-trust community.
             </p>
 
             <div className="space-y-1.5 text-xs text-[#F7F5F2]/60 pt-1">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-[#C27339] shrink-0" />
-                <span>Calgary AB, Toronto ON, Vancouver BC</span>
+                <span>Calgary & Alberta Foothills (Headquarters)</span>
               </div>
               <div className="flex items-center gap-2 pl-6 text-[#F7F5F2]/50">
                 <Globe className="w-3.5 h-3.5 text-[#2D4F3C] shrink-0" />
-                <span>Ulaanbaatar, Mongolia (International)</span>
+                <span>Toronto • Vancouver • Global Online</span>
               </div>
             </div>
 
-            {/* Master Brand Promise */}
+            {/* Master Brand Philosophy */}
             <div className="p-4 bg-white/5 border border-white/10 text-xs text-[#F7F5F2]/80 italic leading-relaxed font-editorial">
-              “Progress does not happen by accident. It happens when you intentionally design your direction, your capability, and your relationships.”
+              “Human development should not be left to chance. It requires honesty about reality, useful frameworks, small practical actions, and human connection.”
             </div>
           </div>
 
-          {/* Offerings Column */}
+          {/* The Offerings Column */}
           <div className="space-y-4">
             <h4 className="text-[10px] uppercase tracking-[0.25em] font-black text-white">
-              Offerings
+              Offerings & Programs
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
                 <button 
-                  onClick={() => onNavigate('beyond')}
-                  className="text-[#F7F5F2]/70 hover:text-white transition-colors text-left"
+                  onClick={() => onNavigate('series')}
+                  className="text-[#F7F5F2]/70 hover:text-white transition-colors text-left flex items-center gap-1.5"
                 >
-                  Mardai Beyond
+                  <span className="text-[#D4AF37] font-mono text-[10px]">01</span>
+                  <span>Mardai Series (500 Models)</span>
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onNavigate('events')}
+                  className="text-[#F7F5F2]/70 hover:text-white transition-colors text-left flex items-center gap-1.5"
+                >
+                  <span className="text-[#C27339] font-mono text-[10px]">02</span>
+                  <span>Mardai Events (Canada)</span>
                 </button>
               </li>
               <li>
                 <button 
                   onClick={() => onNavigate('breakthrough')}
-                  className="text-[#F7F5F2]/70 hover:text-white transition-colors text-left"
+                  className="text-[#F7F5F2]/70 hover:text-white transition-colors text-left flex items-center gap-1.5"
                 >
-                  Mardai Breakthrough
+                  <span className="text-[#2D4F3C] font-mono text-[10px]">03</span>
+                  <span>Mardai Breakthrough</span>
                 </button>
               </li>
               <li>
                 <button 
                   onClick={() => onNavigate('basecamp')}
-                  className="text-[#F7F5F2]/70 hover:text-white transition-colors text-left"
+                  className="text-[#F7F5F2]/70 hover:text-white transition-colors text-left flex items-center gap-1.5"
                 >
-                  Mardai Basecamp
+                  <span className="text-[#C27339] font-mono text-[10px]">04</span>
+                  <span>Mardai Basecamp (2 Days)</span>
                 </button>
               </li>
               <li>
                 <button 
                   onClick={() => onNavigate('workshops')}
-                  className="text-[#F7F5F2]/70 hover:text-white transition-colors text-left"
+                  className="text-[#F7F5F2]/70 hover:text-white transition-colors text-left flex items-center gap-1.5"
                 >
-                  Mardai Workshops
+                  <span className="text-[#2D4F3C] font-mono text-[10px]">05</span>
+                  <span>Mardai Workshops (Orgs)</span>
                 </button>
               </li>
               <li>
                 <button 
                   onClick={() => onNavigate('community')}
-                  className="text-[#F7F5F2]/70 hover:text-white transition-colors text-left"
+                  className="text-[#F7F5F2]/70 hover:text-white transition-colors text-left flex items-center gap-1.5"
                 >
-                  Mardai Community
+                  <span className="text-[#C27339] font-mono text-[10px]">06</span>
+                  <span>Mardai Community</span>
                 </button>
               </li>
             </ul>
@@ -127,40 +144,31 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Navigation & Resources */}
           <div className="space-y-4">
             <h4 className="text-[10px] uppercase tracking-[0.25em] font-black text-white">
-              Explore
+              Company
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
                 <button 
                   onClick={() => onNavigate('about')}
-                  className="text-[#F7F5F2]/70 hover:text-white transition-colors text-left"
+                  className="text-[#F7F5F2]/70 hover:text-white transition-colors"
                 >
-                  About & Philosophy
+                  About Mardai & Founder
                 </button>
               </li>
               <li>
                 <button 
                   onClick={() => onNavigate('insights')}
-                  className="text-[#F7F5F2]/70 hover:text-white transition-colors text-left"
+                  className="text-[#F7F5F2]/70 hover:text-white transition-colors"
                 >
-                  Insights & Frameworks
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={onOpenBasecampReview}
-                  className="text-[#F7F5F2]/70 hover:text-white transition-colors text-left flex items-center gap-1 font-bold"
-                >
-                  <span>Your Breakthrough Review</span>
-                  <span className="text-[9px] px-1.5 py-0.5 bg-[#2D4F3C] text-white">Free</span>
+                  Mardai Insights
                 </button>
               </li>
               <li>
                 <button 
                   onClick={() => onNavigate('contact')}
-                  className="text-[#F7F5F2]/70 hover:text-white transition-colors text-left"
+                  className="text-[#F7F5F2]/70 hover:text-white transition-colors"
                 >
-                  Contact & Inquiries
+                  Contact & Partnerships
                 </button>
               </li>
             </ul>
@@ -169,10 +177,10 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Newsletter Column */}
           <div className="space-y-4">
             <h4 className="text-[10px] uppercase tracking-[0.25em] font-black text-white">
-              Mardai Beyond Newsletter
+              Mardai Series & Frameworks
             </h4>
             <p className="text-xs text-[#F7F5F2]/70 leading-relaxed">
-              Bi-weekly practical frameworks on systems thinking, career architecture, leadership, and responsible AI.
+              Bi-weekly practical frameworks, mental models, decision systems, and priority notifications for card deck releases.
             </p>
 
             <form onSubmit={handleSubscribe} className="space-y-2">
@@ -188,7 +196,7 @@ export const Footer: React.FC<FooterProps> = ({
                 type="submit"
                 className="w-full py-2.5 px-4 bg-[#2D4F3C] hover:bg-[#3C6D58] text-white text-xs font-bold uppercase tracking-[0.15em] transition-colors flex items-center justify-center gap-1.5"
               >
-                <span>Subscribe</span>
+                <span>Subscribe Free</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </form>
@@ -239,9 +247,9 @@ export const Footer: React.FC<FooterProps> = ({
         {/* Sub-footer */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#F7F5F2]/50">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-            <span>© {new Date().getFullYear()} MARDAI. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} MARDAI Inc. All rights reserved.</span>
             <span className="hidden sm:inline">•</span>
-            <span>Beyond | Breakthrough | Basecamp | Workshops | Community</span>
+            <span className="text-[#D4AF37]">Learn continuously • Grow intentionally • Connect deeply</span>
           </div>
 
           <div className="flex items-center gap-6">
@@ -252,13 +260,13 @@ export const Footer: React.FC<FooterProps> = ({
               Privacy Policy
             </button>
             <button 
-              onClick={() => onShowToast('Terms of Engagement', 'Standard educational, advisory, and retreat engagement terms.')}
+              onClick={() => onShowToast('Terms of Engagement', 'Standard educational, development, and retreat engagement terms.')}
               className="hover:text-white transition-colors"
             >
               Terms of Engagement
             </button>
             <button 
-              onClick={() => onShowToast('Accessibility Statement', 'Mardai is committed to accessible, inclusive digital experiences and physical venues.')}
+              onClick={() => onShowToast('Accessibility Statement', 'Mardai is committed to accessible, inclusive experiences.')}
               className="hover:text-white transition-colors"
             >
               Accessibility

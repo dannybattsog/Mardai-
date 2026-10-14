@@ -90,8 +90,8 @@ export const BasecampReviewModal: React.FC<BasecampReviewModalProps> = ({
       };
     }
     return {
-      title: 'Mardai Beyond & Workshops',
-      pageId: 'beyond' as PageId,
+      title: 'Mardai Series & Workshops',
+      pageId: 'series' as PageId,
       reason: 'Your baseline is solid. Focus on continuous cognitive growth, high-leverage frameworks, and modern AI integration.'
     };
   };

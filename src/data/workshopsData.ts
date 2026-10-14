@@ -2,130 +2,140 @@ import { WorkshopCategory } from '../types';
 
 export const WORKSHOP_CATEGORIES: WorkshopCategory[] = [
   {
-    id: 'think-better',
-    title: '1. THINK BETTER',
-    subtitle: 'Systems Thinking & Decision Making',
-    description: 'Equip leaders and teams with rigorous cognitive frameworks to diagnose complex bottlenecks, avoid unintended second-order traps, and make high-stakes decisions with clarity.',
+    id: 'human-development',
+    title: '1. HUMAN DEVELOPMENT & PERSONAL EFFECTIVENESS',
+    subtitle: 'Self-Awareness, Energy & High-Leverage Habits',
+    description: 'Equip professionals with practical self-management frameworks to master personal energy, prevent burnout, focus attention, and develop deliberate daily operating systems.',
     topics: [
-      'Mental models for high-velocity teams',
-      'Root cause analysis & 5-Whys in modern operations',
+      'The 5 Dimensions of Professional Sustainability',
+      'Cognitive load & attention architecture in distracted workplaces',
+      'Designing non-negotiable personal boundaries and habit loops',
       'Prioritization frameworks (Impact vs. Effort vs. Reversibility)',
-      'Second- and third-order consequence mapping',
-      'Strategic problem solving under ambiguity'
+      'Energy management vs. time management'
     ],
     outcomes: [
-      'Reduction in reactionary fire-fighting',
-      'Unified decision-making language across cross-functional teams',
-      'Faster convergence on strategic initiatives'
+      'Reduction in employee burnout and cognitive fatigue',
+      'Reclaiming 4–6 hours of weekly focused productivity',
+      'Higher clarity, personal agency, and daily resilience'
     ]
   },
   {
-    id: 'work-better',
-    title: '2. WORK BETTER',
-    subtitle: 'Personal Effectiveness in the AI Era',
-    description: 'Help knowledge workers transcend digital overload and build pragmatic human + AI workflows that amplify productivity, focus, and critical thinking.',
-    topics: [
-      'Designing deep work architecture in an interrupted workplace',
-      'Pragmatic AI workflows: Prompting, synthesizing, and validating',
-      'Separating judgment bandwidth from execution bandwidth',
-      'Time blocking, energy management, and high-leverage outputs',
-      'Human + AI collaboration protocols'
-    ],
-    outcomes: [
-      'Reclaiming 4–6 hours of weekly deep focus time per employee',
-      'Responsible, confident adoption of generative AI tools',
-      'Higher output quality with less cognitive fatigue'
-    ]
-  },
-  {
-    id: 'lead-better',
-    title: '3. LEAD BETTER',
-    subtitle: 'Self-Awareness, Communication & Team Effectiveness',
-    description: 'Cultivate emotionally intelligent leaders who foster high trust, constructive candor, psychological safety, and clear accountability without micro-management.',
+    id: 'leadership-development',
+    title: '2. LEADERSHIP & TEAM EFFECTIVENESS',
+    subtitle: 'Constructive Candor, Psychological Safety & Alignment',
+    description: 'Cultivate emotionally intelligent leaders who foster high trust, constructive candor, psychological safety, and clear accountability without micromanagement.',
     topics: [
       'Emotional intelligence & self-awareness in leadership',
-      'Adaptive communication styles across diverse teams',
       'Delivering actionable, constructive feedback without friction',
       'Building psychological safety as an operational standard',
-      'Accountability pacts and clear delegation frameworks'
+      'Accountability pacts, clear delegation, and shared ownership',
+      'Navigating cross-functional tensions and interpersonal friction'
     ],
     outcomes: [
-      'Measurable boost in team engagement & retention',
-      'Proactive identification of project risks before escalation',
-      'Strengthened cross-departmental collaboration'
+      'Measurable boost in team engagement and talent retention',
+      'Faster conflict resolution and transparent team communication',
+      'Strengthened psychological safety and collective ownership'
     ]
   },
   {
-    id: 'navigate-change',
-    title: '4. NAVIGATE CHANGE',
-    subtitle: 'Human-Centred Organizational Transformation',
-    description: 'Guide organizations through complex transitions — technology rollouts, restructuring, M&A, and culture shifts — by focusing on the human psychology of adaptation.',
+    id: 'systems-thinking',
+    title: '3. SYSTEMS THINKING & DECISION MAKING',
+    subtitle: 'Root Causes, Mental Models & Strategic Clarity',
+    description: 'Equip leaders and teams with rigorous cognitive frameworks to diagnose complex bottlenecks, avoid unintended second-order consequences, and make high-stakes decisions.',
     topics: [
-      'Change readiness diagnostic and friction identification',
-      'Managing the psychological transition curve for employees',
-      'Effective communication strategies during uncertainty',
-      'Workplace and AI adoption without culture erosion',
-      'Designing micro-habits that make transformation stick'
+      'Mental models for high-velocity teams under ambiguity',
+      'Root-cause analysis & separating symptoms from core constraints',
+      'Second- and third-order consequence mapping',
+      'Collaborative decision matrices and pre-mortems',
+      'Unified decision-making frameworks across departments'
     ],
     outcomes: [
-      'Accelerated user adoption rates for new tools & systems',
+      'Reduction in reactionary firefighting',
+      'Unified decision-making language across cross-functional teams',
+      'Faster, higher-confidence strategic choices'
+    ]
+  },
+  {
+    id: 'ai-and-change',
+    title: '4. AI-ERA CAPABILITY & CHANGE READINESS',
+    subtitle: 'Human-Centered Adaptation & Modern Workflows',
+    description: 'Guide organizations through complex transitions—technology rollouts, AI integration, restructuring, and culture shifts—by focusing on human psychology and augmented capability.',
+    topics: [
+      'Responsible human + AI workflows: Prompting, synthesis, and judgment',
+      'Change readiness diagnostics and friction identification',
+      'Managing the psychological transition curve for employees',
+      'Preserving authentic human connection in digital environments',
+      'Designing micro-habits that make organizational change stick'
+    ],
+    outcomes: [
+      'Accelerated adoption rates for modern digital and AI tools',
       'Minimized transformation fatigue and employee cynicism',
-      'Sustained behavioral change and organizational resilience'
+      'Sustained behavioral change and organizational adaptability'
     ]
   }
 ];
 
 export const WORKSHOP_FORMATS = [
   {
-    name: 'Keynote / Interactive Briefing',
+    name: 'Interactive Keynotes & Briefings',
     duration: '60 – 90 Minutes',
-    idealFor: 'All-hands meetings, company retreats, annual kickoffs, or leadership offsites.',
+    idealFor: 'All-hands meetings, company retreats, annual kickoffs, or leadership summits.',
     description: 'High-impact, engaging presentation combined with live audience reflection exercises to introduce core frameworks and shift mindsets quickly.'
   },
   {
-    name: 'Half-Day Intensive Workshop',
+    name: 'Targeted Half-Day Workshops',
     duration: '3.5 – 4 Hours',
-    idealFor: 'Departmental teams, manager cohorts, or project squads needing targeted capability development.',
-    description: 'Hands-on deep dive combining framework instruction, live case study workshops, peer feedback, and customized team action plans.'
+    idealFor: 'Departmental teams, manager cohorts, or project squads needing practical capability development.',
+    description: 'Hands-on deep dive combining framework instruction, live case study work, peer feedback, and customized team action commitments.'
   },
   {
-    name: 'Full-Day Transformation Masterclass',
-    duration: '7 Hours',
-    idealFor: 'Senior leadership teams, high-potential talent cohorts, or business units undergoing major change.',
-    description: 'Immersive full-day experience with multi-stage breakout exercises, live systems simulation, role-playing, and tangible operational playbooks.'
+    name: 'Facilitated Team Offsites & Retreats',
+    duration: '1 – 2 Days',
+    idealFor: 'Senior leadership teams, high-potential talent cohorts, or business units stepping back to align.',
+    description: 'Immersive offsite experiences combining strategic reflection, deep connection, systems diagnostics, and collaborative roadmap development.'
   },
   {
-    name: 'Multi-Session Enterprise Program',
-    duration: '4 – 8 Weeks (Modular)',
+    name: 'Customized Learning Journeys',
+    duration: '4 – 12 Weeks (Modular)',
     idealFor: 'Sustained organizational capability building and leadership development pipelines.',
-    description: 'Blended learning journey featuring bi-weekly workshops, micro-assignments, executive coaching, and measurable milestone check-ins.'
+    description: 'Blended organizational program featuring modular workshops, peer accountability pods, development assessments, and measurable milestone reviews.'
   }
 ];
 
 export const METHODOLOGY_STEPS = [
   {
     step: '01',
-    name: 'Diagnose',
-    description: 'We conduct pre-engagement stakeholder interviews and team assessments to understand your specific organizational context, team dynamics, and operational bottlenecks.'
+    name: 'ASSESS',
+    description: 'We conduct team diagnostics and stakeholder interviews to uncover current baselines, operational bottlenecks, and relational dynamics.'
   },
   {
     step: '02',
-    name: 'Design',
-    description: 'We tailor our core frameworks to your industry, team language, and strategic objectives — ensuring zero generic, off-the-shelf lecture material.'
+    name: 'PRIORITIZE',
+    description: 'We identify the single highest-leverage organizational constraint rather than trying to fix everything at once.'
   },
   {
     step: '03',
-    name: 'Facilitate',
-    description: 'We deliver high-engagement, psychologically safe sessions focused on active application, honest dialogue, and practical problem-solving.'
+    name: 'DESIGN',
+    description: 'We tailor our core frameworks to your industry, team language, and strategic objectives for seamless adoption.'
   },
   {
     step: '04',
-    name: 'Apply',
-    description: 'Participants leave with concrete tools, custom cheat sheets, and 30-day behavioral commitment commitments to apply immediately in their daily workflow.'
+    name: 'ACT',
+    description: 'We deliver high-engagement, psychologically safe sessions where teams practice frameworks on real business challenges.'
   },
   {
     step: '05',
-    name: 'Measure',
-    description: 'We provide post-session pulse diagnostics, participant feedback summaries, and actionable recommendations for management to sustain the gains.'
+    name: 'CONNECT',
+    description: 'We establish peer accountability partnerships and communication channels so team members support one another.'
+  },
+  {
+    step: '06',
+    name: 'REVIEW',
+    description: 'We evaluate behavioral adoption, collect structured participant feedback, and assess tangible outcomes.'
+  },
+  {
+    step: '07',
+    name: 'ADAPT',
+    description: 'We calibrate routines and systems based on operational realities to ensure permanent, compounding organizational capability.'
   }
 ];

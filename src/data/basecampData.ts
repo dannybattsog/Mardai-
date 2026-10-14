@@ -144,7 +144,7 @@ export const BASECAMP_FAQS = [
     a: 'Our cohorts bring together professionals, business leaders, entrepreneurs, fathers, newcomers, and men navigating career transitions or leadership expansion. Group size is strictly capped at 12–16 participants to ensure intimate, high-trust discussions.'
   },
   {
-    q: 'What do I walk away with after 2.5 days?',
+    q: 'What do I walk away with after 2 days?',
     a: 'You leave with crystal clarity on your priorities, an individualized 90-Day Personal Basecamp Action Plan, practical systems-thinking frameworks, restored energy, and a vetted peer group in the Mardai Community for ongoing accountability.'
   }
 ];
