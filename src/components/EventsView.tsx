@@ -22,12 +22,14 @@ interface EventsViewProps {
   onNavigate: (page: PageId) => void;
   onSelectEvent: (event: MardaiEvent, mode: 'register' | 'waitlist') => void;
   onOpenBasecampReview: () => void;
+  onContactWithMessage?: (topic: string, message?: string) => void;
 }
 
 export const EventsView: React.FC<EventsViewProps> = ({
   onNavigate,
   onSelectEvent,
-  onOpenBasecampReview
+  onOpenBasecampReview,
+  onContactWithMessage
 }) => {
   const [selectedCity, setSelectedCity] = useState<string>('ALL');
 
@@ -234,6 +236,31 @@ export const EventsView: React.FC<EventsViewProps> = ({
 
               </div>
             ))}
+          </div>
+
+          {/* City expansion callout */}
+          <div className="mt-12 p-6 bg-white border border-[#1A1A1A]/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+            <div className="space-y-1 text-center sm:text-left">
+              <span className="font-bold text-[#1A1A1A]">Don't see your city listed yet?</span>
+              <p className="text-[#1A1A1A]/70">
+                Mardai is actively evaluating corporate hubs and municipal chapters across Canada.
+              </p>
+            </div>
+            <button
+              onClick={() => {
+                if (onContactWithMessage) {
+                  onContactWithMessage(
+                    'city-request',
+                    'Hello Mardai team,\n\nI would like to request bringing Mardai programs, workshops, and gatherings to my city: [Please specify your city here].\n\nOrganization / Community details: '
+                  );
+                } else {
+                  onNavigate('contact');
+                }
+              }}
+              className="px-5 py-2.5 bg-[#F7F5F2] hover:bg-[#1A1A1A] hover:text-white text-[#1A1A1A] border border-[#1A1A1A]/20 text-xs font-bold uppercase tracking-wider transition-colors shrink-0"
+            >
+              Request Mardai in your CITY
+            </button>
           </div>
 
         </div>

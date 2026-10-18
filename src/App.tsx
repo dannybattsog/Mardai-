@@ -54,9 +54,30 @@ export function App() {
     setToasts(prev => prev.filter(t => t.id !== id));
   };
 
+  const [contactContext, setContactContext] = useState<{ topic?: string; message?: string } | null>(null);
+
   const handleNavigate = (page: PageId) => {
+    if (page !== 'contact') {
+      setContactContext(null);
+    }
     setCurrentPage(page);
     setModalState({ isOpen: false, type: 'none' });
+  };
+
+  const handleNavigateToContact = (topic?: string, defaultMessage?: string) => {
+    if (topic || defaultMessage) {
+      setContactContext({ topic, message: defaultMessage });
+    }
+    setCurrentPage('contact');
+    setModalState({ isOpen: false, type: 'none' });
+    setTimeout(() => {
+      const el = document.getElementById('send-a-message');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, 100);
   };
 
   const handleOpenModal = (type: ModalState['type'], data?: any) => {
@@ -75,7 +96,17 @@ export function App() {
   };
 
   const handleSelectEvent = (event: MardaiEvent, mode: 'register' | 'waitlist') => {
-    handleOpenModal(mode === 'register' ? 'event-register' : 'event-waitlist', event);
+    if (mode === 'register') {
+      handleNavigateToContact(
+        'calgary-event',
+        `Hello Mardai team,\n\nI would like to register for the Calgary event: "${event.eventName}" on ${event.date} at ${event.venue}.\n\nPlease let me know the registration steps and confirm my seat reservation.`
+      );
+    } else {
+      handleNavigateToContact(
+        'waitlist',
+        `Hello Mardai team,\n\nPlease add me to the priority waitlist for ${event.city} ("${event.eventName}").\n\nPlease notify me with early-access tickets as soon as registration opens for this city.`
+      );
+    }
   };
 
   return (
@@ -117,6 +148,7 @@ export function App() {
             <EventsSection 
               onNavigate={handleNavigate}
               onSelectEvent={handleSelectEvent}
+              onContactWithMessage={handleNavigateToContact}
             />
 
             {/* Sections 5 & 6: One Day Four Pillars & Come for the Knowledge, Leave with Connections (Long Table Shared Meal Background) */}
@@ -137,6 +169,7 @@ export function App() {
               }}
               onOpenBasecampReview={() => handleOpenModal('basecamp-review')}
               onOpenFindPath={() => handleOpenModal('find-path')}
+              onContactWithMessage={handleNavigateToContact}
             />
           </div>
         )}
@@ -147,6 +180,7 @@ export function App() {
             onNavigate={handleNavigate}
             onSelectEvent={handleSelectEvent}
             onOpenBasecampReview={() => handleOpenModal('basecamp-review')}
+            onContactWithMessage={handleNavigateToContact}
           />
         )}
 
@@ -189,6 +223,7 @@ export function App() {
             onOpenBasecampReview={() => handleOpenModal('basecamp-review')}
             onNavigate={handleNavigate}
             onShowToast={showToast}
+            onContactWithMessage={handleNavigateToContact}
           />
         )}
 
@@ -211,6 +246,8 @@ export function App() {
           <ContactView 
             onNavigate={handleNavigate}
             onShowToast={showToast}
+            initialTopic={contactContext?.topic}
+            initialMessage={contactContext?.message}
           />
         )}
       </main>

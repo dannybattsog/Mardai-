@@ -16,11 +16,13 @@ import {
 interface EventsSectionProps {
   onNavigate: (page: PageId) => void;
   onSelectEvent: (event: MardaiEvent, mode: 'register' | 'waitlist') => void;
+  onContactWithMessage?: (topic: string, message?: string) => void;
 }
 
 export const EventsSection: React.FC<EventsSectionProps> = ({
   onNavigate,
-  onSelectEvent
+  onSelectEvent,
+  onContactWithMessage
 }) => {
   const [selectedFilter, setSelectedFilter] = useState<string>('ALL');
 
@@ -227,10 +229,19 @@ export const EventsSection: React.FC<EventsSectionProps> = ({
             </p>
           </div>
           <button
-            onClick={() => onNavigate('contact')}
+            onClick={() => {
+              if (onContactWithMessage) {
+                onContactWithMessage(
+                  'city-request',
+                  'Hello Mardai team,\n\nI would like to request bringing Mardai programs, workshops, and gatherings to my city: [Please specify your city here].\n\nOrganization / Community details: '
+                );
+              } else {
+                onNavigate('contact');
+              }
+            }}
             className="px-4 py-2 bg-[#F7F5F2] hover:bg-[#1A1A1A] hover:text-white text-[#1A1A1A] border border-[#1A1A1A]/20 text-xs font-bold uppercase tracking-wider transition-colors shrink-0"
           >
-            Request Mardai in Your City
+            Request Mardai in your CITY
           </button>
         </div>
 

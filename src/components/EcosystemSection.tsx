@@ -21,13 +21,15 @@ interface EcosystemSectionProps {
   onOpenRegister: () => void;
   onOpenBasecampReview: () => void;
   onOpenFindPath: () => void;
+  onContactWithMessage?: (topic: string, message?: string) => void;
 }
 
 export const EcosystemSection: React.FC<EcosystemSectionProps> = ({
   onNavigate,
   onOpenRegister,
   onOpenBasecampReview,
-  onOpenFindPath
+  onOpenFindPath,
+  onContactWithMessage
 }) => {
   const communityRoles = [
     {
@@ -521,7 +523,16 @@ export const EcosystemSection: React.FC<EcosystemSectionProps> = ({
             </button>
 
             <button
-              onClick={() => onNavigate('community')}
+              onClick={() => {
+                if (onContactWithMessage) {
+                  onContactWithMessage(
+                    'community',
+                    'Hello Mardai team,\n\nI would like to join the Mardai Community (monthly breakfast gatherings, roundtables, and practitioner network in Calgary and across Canada).\n\nPlease let me know how to get involved.'
+                  );
+                } else {
+                  onNavigate('contact');
+                }
+              }}
               className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 text-xs font-bold uppercase tracking-[0.16em] transition-all flex items-center gap-2"
             >
               <Users className="w-4 h-4 text-[#2D4F3C]" />

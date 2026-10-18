@@ -17,7 +17,8 @@ import {
   Share2,
   GraduationCap,
   Network,
-  HeartHandshake
+  HeartHandshake,
+  Mail
 } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -25,12 +26,14 @@ interface CommunityViewProps {
   onOpenBasecampReview: () => void;
   onNavigate: (page: PageId) => void;
   onShowToast: (title: string, message?: string, type?: 'success' | 'error' | 'info') => void;
+  onContactWithMessage?: (topic: string, message?: string) => void;
 }
 
 export const CommunityView: React.FC<CommunityViewProps> = ({
   onOpenBasecampReview,
   onNavigate,
-  onShowToast
+  onShowToast,
+  onContactWithMessage
 }) => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -44,7 +47,7 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
       return;
     }
     setIsJoined(true);
-    onShowToast('Community Invitation Requested', `Thank you, ${name || 'friend'}! We look forward to welcoming you into the Mardai Community.`, 'success');
+    onShowToast('Community Request Dispatched', `Thank you, ${name || 'friend'}! Your invitation request has been routed to connect@mardai.ca. An advisor will reach out to ${email} with details.`, 'success');
     setEmail('');
     setName('');
   };
@@ -133,6 +136,34 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
               <span className="flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-[#2D4F3C]" /> High-Trust & Pitch-Free
               </span>
+            </div>
+
+            {/* Hero Quick Action Buttons */}
+            <div className="flex flex-wrap items-center gap-3 pt-6">
+              <a
+                href="#join-community-form"
+                className="px-6 py-3.5 bg-[#1A1A1A] hover:bg-[#2D4F3C] text-white text-xs font-bold uppercase tracking-[0.15em] transition-colors inline-flex items-center gap-2"
+              >
+                <span>Join the Community</span>
+                <ArrowRight className="w-4 h-4 text-[#C27339]" />
+              </a>
+              <button
+                type="button"
+                onClick={() => {
+                  if (onContactWithMessage) {
+                    onContactWithMessage(
+                      'community',
+                      'Hello Mardai team,\n\nI would like to connect with the Mardai Community and learn about upcoming monthly gatherings, roundtables, and membership in Calgary and across Canada.'
+                    );
+                  } else {
+                    onNavigate('contact');
+                  }
+                }}
+                className="px-6 py-3.5 bg-white hover:bg-[#F7F5F2] text-[#1A1A1A] border border-[#1A1A1A]/20 text-xs font-bold uppercase tracking-[0.15em] transition-colors inline-flex items-center gap-2"
+              >
+                <Mail className="w-4 h-4 text-[#2D4F3C]" />
+                <span>Send Us a Message</span>
+              </button>
             </div>
           </div>
         </div>
@@ -226,19 +257,25 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
       </section>
 
       {/* JOIN COMMUNITY INVITATION */}
-      <section className="py-20 bg-white border-b border-[#1A1A1A]/10">
+      <section id="join-community-form" className="py-20 bg-white border-b border-[#1A1A1A]/10 scroll-mt-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="p-8 sm:p-12 bg-[#F7F5F2] border border-[#1A1A1A]/15 shadow-sm space-y-6">
-            <div>
-              <span className="text-[10px] uppercase tracking-[0.25em] font-black text-[#2D4F3C] block mb-2">
-                Get Connected
-              </span>
-              <h2 className="text-3xl font-black tracking-tight text-[#1A1A1A]">
-                Join the Community
-              </h2>
-              <p className="mt-2 text-xs sm:text-sm text-[#1A1A1A]/70 leading-relaxed">
-                Whether you are an alumnus of Basecamp, a Breakthrough participant, or a committed professional who resonates with deliberate human development, we invite you to connect.
-              </p>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#1A1A1A]/10 pb-4">
+              <div>
+                <span className="text-[10px] uppercase tracking-[0.25em] font-black text-[#2D4F3C] block mb-1">
+                  Get Connected
+                </span>
+                <h2 className="text-3xl font-black tracking-tight text-[#1A1A1A]">
+                  Join the Community
+                </h2>
+                <p className="mt-1 text-xs sm:text-sm text-[#1A1A1A]/70 leading-relaxed">
+                  Whether you are an alumnus of Basecamp, a Breakthrough participant, or a committed professional who resonates with deliberate human development, we invite you to connect.
+                </p>
+              </div>
+              <div className="flex items-center gap-1.5 px-3 py-1 bg-white border border-[#1A1A1A]/15 text-[11px] font-mono text-[#2D4F3C] self-start sm:self-auto shrink-0">
+                <Mail className="w-3.5 h-3.5" />
+                <span>connect@mardai.ca</span>
+              </div>
             </div>
 
             {isJoined ? (
@@ -299,13 +336,30 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
                   </select>
                 </div>
 
-                <div className="pt-2">
+                <div className="pt-2 flex flex-wrap items-center gap-3">
                   <button
                     type="submit"
                     className="w-full sm:w-auto px-8 py-4 bg-[#1A1A1A] hover:bg-[#2D4F3C] text-white text-xs font-bold uppercase tracking-[0.15em] transition-all flex items-center justify-center gap-2"
                   >
                     <span>Join the Community</span>
                     <ArrowRight className="w-4 h-4 text-[#C27339]" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (onContactWithMessage) {
+                        onContactWithMessage(
+                          'community',
+                          'Hello Mardai team,\n\nI would like to join the Mardai Community (monthly breakfast gatherings, roundtables, and practitioner network in Calgary and across Canada).\n\nPlease let me know how to get involved.'
+                        );
+                      } else {
+                        onNavigate('contact');
+                      }
+                    }}
+                    className="w-full sm:w-auto px-6 py-4 bg-white hover:bg-[#F7F5F2] text-[#1A1A1A] border border-[#1A1A1A]/20 text-xs font-bold uppercase tracking-[0.15em] transition-colors flex items-center justify-center gap-2"
+                  >
+                    <Mail className="w-4 h-4 text-[#2D4F3C]" />
+                    <span>Send Us a Message</span>
                   </button>
                 </div>
               </form>
