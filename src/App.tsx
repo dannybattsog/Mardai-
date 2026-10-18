@@ -163,6 +163,7 @@ export function App() {
             onOpenApply={() => handleOpenModal('apply-breakthrough')}
             onOpenBasecampReview={() => handleOpenModal('basecamp-review')}
             onNavigate={handleNavigate}
+            onShowToast={showToast}
           />
         )}
 
@@ -171,6 +172,7 @@ export function App() {
             onOpenJoin={() => handleOpenModal('join-basecamp')}
             onOpenBasecampReview={() => handleOpenModal('basecamp-review')}
             onNavigate={handleNavigate}
+            onShowToast={showToast}
           />
         )}
 

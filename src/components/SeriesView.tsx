@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { MARDAI_SERIES_DECKS, CARD_ANATOMY_STEPS } from '../data/seriesData';
 import seriesCollectionImg from '../assets/images/regenerated_image_1791994218671.png';
+import { ProgramContactForm } from './ProgramContactForm';
 
 interface SeriesViewProps {
   onNavigate: (page: any) => void;
@@ -625,6 +626,27 @@ export const SeriesView: React.FC<SeriesViewProps> = ({
             </p>
           </form>
 
+        </div>
+      </section>
+
+      {/* 6. CONTACT MARDAI SERIES VIA connect@mardai.ca */}
+      <section id="series-contact" className="py-20 bg-[#F7F5F2] border-t border-[#1A1A1A]/10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ProgramContactForm
+            programTitle="Mardai Series"
+            subtitle="Inquire about corporate bulk deck orders, card distribution, custom mental model workshops, or specific deck editions directly via connect@mardai.ca."
+            defaultTopic="Pre-Order & Collector Edition Details"
+            topicOptions={[
+              { label: 'Pre-Order & Collector Edition Details', value: 'Pre-Order & Collector Edition Details' },
+              { label: 'Corporate & Team Bulk Boxed Sets (10+ Decks)', value: 'Corporate & Team Bulk Boxed Sets (10+ Decks)' },
+              { label: 'Custom Branded Organization Deck Editions', value: 'Custom Branded Organization Deck Editions' },
+              { label: 'Educational & University Licensing', value: 'Educational & University Licensing' },
+              { label: 'Sample Digital Cards & Framework Inquiries', value: 'Sample Digital Cards & Framework Inquiries' },
+              { label: 'General Series Inquiry', value: 'General Series Inquiry' }
+            ]}
+            theme="light"
+            onShowToast={(title, msg, type) => onShowToast(title, msg || '', type as any)}
+          />
         </div>
       </section>
 

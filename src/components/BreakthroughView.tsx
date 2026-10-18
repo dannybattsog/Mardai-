@@ -21,17 +21,20 @@ import {
   Check
 } from 'lucide-react';
 import { motion } from 'motion/react';
+import { ProgramContactForm } from './ProgramContactForm';
 
 interface BreakthroughViewProps {
   onOpenApply: () => void;
   onOpenBasecampReview: () => void;
   onNavigate: (page: PageId) => void;
+  onShowToast?: (title: string, message?: string, type?: 'success' | 'error' | 'info') => void;
 }
 
 export const BreakthroughView: React.FC<BreakthroughViewProps> = ({
   onOpenApply,
   onOpenBasecampReview,
-  onNavigate
+  onNavigate,
+  onShowToast = () => {}
 }) => {
   const [activePhase, setActivePhase] = useState<number>(1);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -623,6 +626,26 @@ export const BreakthroughView: React.FC<BreakthroughViewProps> = ({
             </div>
           </div>
 
+        </div>
+      </section>
+
+      {/* CONTACT BREAKTHROUGH ADVISORS VIA connect@mardai.ca */}
+      <section id="breakthrough-contact" className="py-20 bg-[#F7F5F2] border-t border-[#1A1A1A]/10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ProgramContactForm
+            programTitle="Mardai Breakthrough"
+            subtitle="Have specific questions about cohort timing, 1-on-1 development scope, corporate professional development subsidies, or confidential circumstances? Reach out directly via connect@mardai.ca."
+            defaultTopic="Cohort Schedule & Admission"
+            topicOptions={[
+              { label: 'Cohort Schedule & Admission Criteria', value: 'Cohort Schedule & Admission Criteria' },
+              { label: 'Executive / Corporate Sponsorship & Invoicing', value: 'Executive / Corporate Sponsorship & Invoicing' },
+              { label: 'Confidential 1-on-1 Pacing & Fit Discussion', value: 'Confidential 1-on-1 Pacing & Fit Discussion' },
+              { label: 'Career Transition / Next Chapter Assessment', value: 'Career Transition / Next Chapter Assessment' },
+              { label: 'General Program Inquiries', value: 'General Program Inquiries' }
+            ]}
+            theme="light"
+            onShowToast={onShowToast}
+          />
         </div>
       </section>
 

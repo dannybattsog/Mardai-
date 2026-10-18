@@ -8,7 +8,8 @@ import {
   Facebook,
   MapPin, 
   Check,
-  Globe
+  Globe,
+  Mail
 } from 'lucide-react';
 
 interface FooterProps {
@@ -69,6 +70,15 @@ export const Footer: React.FC<FooterProps> = ({
               <div className="flex items-center gap-2 pl-6 text-[#F7F5F2]/50">
                 <Globe className="w-3.5 h-3.5 text-[#2D4F3C] shrink-0" />
                 <span>Toronto • Vancouver • Global Online</span>
+              </div>
+              <div className="flex items-center gap-2 pt-1 text-xs">
+                <Mail className="w-4 h-4 text-[#C27339] shrink-0" />
+                <a 
+                  href="mailto:connect@mardai.ca"
+                  className="text-[#F7F5F2] hover:text-[#D4AF37] transition-colors font-medium underline underline-offset-4 decoration-white/20"
+                >
+                  connect@mardai.ca
+                </a>
               </div>
             </div>
 
@@ -170,6 +180,18 @@ export const Footer: React.FC<FooterProps> = ({
                 >
                   Contact & Partnerships
                 </button>
+              </li>
+              <li className="pt-2 border-t border-white/10">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[#C27339] block mb-1">
+                  Email Us
+                </span>
+                <a 
+                  href="mailto:connect@mardai.ca" 
+                  className="text-white hover:text-[#D4AF37] font-medium transition-colors flex items-center gap-1.5"
+                >
+                  <Mail className="w-3.5 h-3.5 text-[#C27339]" />
+                  <span>connect@mardai.ca</span>
+                </a>
               </li>
             </ul>
           </div>

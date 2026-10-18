@@ -19,17 +19,20 @@ import {
   HeartHandshake
 } from 'lucide-react';
 import { motion } from 'motion/react';
+import { ProgramContactForm } from './ProgramContactForm';
 
 interface BasecampViewProps {
   onOpenJoin: () => void;
   onOpenBasecampReview: () => void;
   onNavigate: (page: PageId) => void;
+  onShowToast?: (title: string, message?: string, type?: 'success' | 'error' | 'info') => void;
 }
 
 export const BasecampView: React.FC<BasecampViewProps> = ({
   onOpenJoin,
   onOpenBasecampReview,
-  onNavigate
+  onNavigate,
+  onShowToast = () => {}
 }) => {
   const [activeDay, setActiveDay] = useState<number>(1);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -363,6 +366,26 @@ export const BasecampView: React.FC<BasecampViewProps> = ({
             </div>
           </div>
 
+        </div>
+      </section>
+
+      {/* CONTACT BASECAMP HOSTS VIA connect@mardai.ca */}
+      <section id="basecamp-contact" className="py-20 bg-[#F7F5F2] border-t border-[#1A1A1A]/10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ProgramContactForm
+            programTitle="Mardai Basecamp"
+            subtitle="Questions regarding cabin accommodations, retreat logistics in the Kananaskis foothills, physical requirements, or cohort composition? Reach our retreat hosts directly via connect@mardai.ca."
+            defaultTopic="Retreat Dates & Accommodation"
+            topicOptions={[
+              { label: 'Retreat Dates & Foothills Lodge Accommodation', value: 'Retreat Dates & Foothills Lodge Accommodation' },
+              { label: 'Cohort Dynamics & Attendee Profile (Men’s Retreat)', value: 'Cohort Dynamics & Attendee Profile (Men’s Retreat)' },
+              { label: 'Dietary & Logistics Questions', value: 'Dietary & Logistics Questions' },
+              { label: 'Private Executive / Corporate Retreat Inquiries', value: 'Private Executive / Corporate Retreat Inquiries' },
+              { label: 'General Basecamp Questions', value: 'General Basecamp Questions' }
+            ]}
+            theme="light"
+            onShowToast={onShowToast}
+          />
         </div>
       </section>
 

@@ -8,9 +8,11 @@ import {
   Calendar, 
   Building2, 
   Mountain, 
-  Briefcase,
-  Phone,
-  ShieldCheck
+  Briefcase, 
+  Phone, 
+  ShieldCheck,
+  Copy,
+  Check
 } from 'lucide-react';
 
 interface ContactViewProps {
@@ -27,6 +29,14 @@ export const ContactView: React.FC<ContactViewProps> = ({
   const [topic, setTopic] = useState('general');
   const [message, setMessage] = useState('');
   const [isSent, setIsSent] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('connect@mardai.ca');
+    setCopiedEmail(true);
+    onShowToast('Email Copied', 'connect@mardai.ca copied to clipboard', 'info');
+    setTimeout(() => setCopiedEmail(false), 2500);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,7 +45,7 @@ export const ContactView: React.FC<ContactViewProps> = ({
       return;
     }
     setIsSent(true);
-    onShowToast('Message Dispatched', `Thank you, ${name || 'friend'}. A Mardai advisor will reply to ${email} within 24 hours.`, 'success');
+    onShowToast('Message Dispatched', `Thank you, ${name || 'friend'}. Your message has been routed to connect@mardai.ca. A Mardai advisor will reply to ${email} within 24 hours.`, 'success');
   };
 
   return (
@@ -83,18 +93,36 @@ export const ContactView: React.FC<ContactViewProps> = ({
               </div>
 
               <div className="space-y-4 pt-4 border-t border-[#1A1A1A]/10">
-                <div className="flex items-center gap-3 text-xs text-[#1A1A1A]">
-                  <div className="w-8 h-8 bg-[#F7F5F2] border border-[#1A1A1A]/10 flex items-center justify-center text-[#2D4F3C]">
+                <div className="flex items-start gap-3 text-xs text-[#1A1A1A]">
+                  <div className="w-8 h-8 bg-[#F7F5F2] border border-[#1A1A1A]/10 flex items-center justify-center text-[#2D4F3C] shrink-0 mt-0.5">
                     <Mail className="w-4 h-4" />
                   </div>
-                  <div>
-                    <span className="text-[10px] uppercase font-bold text-[#1A1A1A]/50 block">Inquiries</span>
-                    <span>connect@mardaigroup.com</span>
+                  <div className="flex-1">
+                    <span className="text-[10px] uppercase font-bold text-[#1A1A1A]/50 block">Company Inquiries</span>
+                    <div className="flex items-center gap-2 mt-0.5">
+                      <a 
+                        href="mailto:connect@mardai.ca" 
+                        className="font-mono font-bold text-sm text-[#1A1A1A] hover:text-[#2D4F3C] transition-colors"
+                      >
+                        connect@mardai.ca
+                      </a>
+                      <button
+                        type="button"
+                        onClick={handleCopyEmail}
+                        className="p-1 text-[#1A1A1A]/50 hover:text-[#1A1A1A] transition-colors"
+                        title="Copy email address"
+                      >
+                        {copiedEmail ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                      </button>
+                    </div>
+                    <span className="text-[10px] text-[#1A1A1A]/60 block mt-0.5">
+                      Direct executive inbox for partnerships, programs, and general inquiries
+                    </span>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3 text-xs text-[#1A1A1A]">
-                  <div className="w-8 h-8 bg-[#F7F5F2] border border-[#1A1A1A]/10 flex items-center justify-center text-[#2D4F3C]">
+                  <div className="w-8 h-8 bg-[#F7F5F2] border border-[#1A1A1A]/10 flex items-center justify-center text-[#2D4F3C] shrink-0">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
@@ -133,22 +161,49 @@ export const ContactView: React.FC<ContactViewProps> = ({
               {isSent ? (
                 <div className="p-8 bg-white border border-[#2D4F3C]/40 text-center space-y-4">
                   <CheckCircle2 className="w-10 h-10 text-[#2D4F3C] mx-auto" />
-                  <h4 className="text-2xl font-bold text-[#1A1A1A]">
-                    Message Dispatched
+                  <h4 className="text-2xl font-bold text-[#1A1A1A]" style={{ fontFamily: 'Georgia, serif' }}>
+                    Message Routed to connect@mardai.ca
                   </h4>
-                  <p className="text-xs text-[#1A1A1A]/70 max-w-md mx-auto leading-relaxed">
-                    Thank you for reaching out to Mardai. A member of our executive advisory team will review your message and respond promptly.
+                  <p className="text-xs text-[#1A1A1A]/75 max-w-md mx-auto leading-relaxed">
+                    Thank you for reaching out to Mardai. Your inquiry has been routed directly to our inbox at <strong>connect@mardai.ca</strong>. A member of our executive advisory team will review your message and respond promptly to <strong>{email}</strong>.
                   </p>
+                  <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsSent(false);
+                        setName('');
+                        setEmail('');
+                        setMessage('');
+                      }}
+                      className="px-5 py-2.5 bg-white border border-[#1A1A1A]/20 text-xs font-bold uppercase tracking-wider text-[#1A1A1A] hover:bg-[#F7F5F2] transition-colors"
+                    >
+                      Send Another Message
+                    </button>
+                    <a
+                      href={`mailto:connect@mardai.ca?subject=${encodeURIComponent(`Website Inquiry: ${name}`)}`}
+                      className="px-5 py-2.5 bg-[#2D4F3C] hover:bg-[#3C6D58] text-white text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1.5 transition-colors"
+                    >
+                      <Mail className="w-3.5 h-3.5" />
+                      <span>Email Directly</span>
+                    </a>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <span className="text-[10px] uppercase tracking-[0.25em] font-black text-[#2D4F3C] block mb-2">
-                      Inquiry Form
-                    </span>
-                    <h3 className="text-2xl font-bold text-[#1A1A1A]">
-                      Send Us a Message
-                    </h3>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#1A1A1A]/10 pb-4">
+                    <div>
+                      <span className="text-[10px] uppercase tracking-[0.25em] font-black text-[#2D4F3C] block mb-1">
+                        Direct Company Inquiry Form
+                      </span>
+                      <h3 className="text-2xl font-bold text-[#1A1A1A]" style={{ fontFamily: 'Georgia, serif' }}>
+                        Send Us a Message
+                      </h3>
+                    </div>
+                    <div className="flex items-center gap-1.5 px-3 py-1 bg-white border border-[#1A1A1A]/15 text-[11px] font-mono text-[#2D4F3C] self-start sm:self-auto">
+                      <Mail className="w-3.5 h-3.5" />
+                      <span>connect@mardai.ca</span>
+                    </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
@@ -218,7 +273,7 @@ export const ContactView: React.FC<ContactViewProps> = ({
                       type="submit"
                       className="bg-[#1A1A1A] hover:bg-[#2D4F3C] text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.15em] transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
                     >
-                      <span>Send Direct Message</span>
+                      <span>Send to connect@mardai.ca</span>
                       <ArrowRight className="w-4 h-4 text-[#C27339]" />
                     </button>
                   </div>

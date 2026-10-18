@@ -41,6 +41,7 @@ export const Header: React.FC<HeaderProps> = ({
     { id: 'workshops', label: 'For Organizations' },
     { id: 'community', label: 'Community' },
     { id: 'about', label: 'About' },
+    { id: 'contact', label: 'Contact' },
   ];
 
   const handleNavClick = (page: PageId) => {
