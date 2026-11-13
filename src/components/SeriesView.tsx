@@ -25,6 +25,9 @@ import { MARDAI_SERIES_DECKS, CARD_ANATOMY_STEPS } from '../data/seriesData';
 import seriesCollectionImg from '../assets/images/regenerated_image_1791994218671.png';
 import { ProgramContactForm } from './ProgramContactForm';
 
+// Stripe Payment Link for the Human Systems first-release deck (CA$129, one-time).
+const STRIPE_HUMAN_SYSTEMS_URL = 'https://buy.stripe.com/8x23cw9R00OJ53WchUdIA00';
+
 interface SeriesViewProps {
   onNavigate: (page: any) => void;
   onShowToast: (title: string, message: string, type?: 'success' | 'info' | 'warning') => void;
@@ -159,14 +162,22 @@ export const SeriesView: React.FC<SeriesViewProps> = ({
                   100 models FOR LIFE, WORK & HUMAN CONNECTION. The foundational deck is currently in final production. Pre-order reservation guarantees first-edition boxed shipment.
                 </p>
 
-                <div className="pt-2">
+                <div className="pt-2 space-y-3">
                   <a
-                    href="#priority-waitlist"
+                    href={STRIPE_HUMAN_SYSTEMS_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2.5 bg-[#D4AF37] hover:bg-[#bfa035] text-[#0A2540] px-6 py-3 text-xs font-black uppercase tracking-[0.16em] transition-all font-mono shadow-md"
                   >
-                    <span>Reserve First Release</span>
+                    <span>Pre-Order Now — CA$129</span>
                     <ArrowRight className="w-4 h-4" />
                   </a>
+                  <p className="text-[11px] font-mono text-white/60">
+                    One-time payment · Secure checkout via Stripe ·{' '}
+                    <a href="#priority-waitlist" className="underline underline-offset-2 hover:text-white">
+                      or join the priority waitlist
+                    </a>
+                  </p>
                 </div>
 
                 <div className="text-[11px] font-mono text-white/60 flex items-center gap-3 pt-2">
@@ -283,6 +294,17 @@ export const SeriesView: React.FC<SeriesViewProps> = ({
               </div>
 
               <div className="pt-2 flex flex-wrap items-center gap-3">
+                {selectedDeck.status === 'coming_soon_first' && (
+                  <a
+                    href={STRIPE_HUMAN_SYSTEMS_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-[#D4AF37] hover:bg-[#bfa035] text-[#0A2540] px-6 py-3 text-xs font-black uppercase tracking-[0.16em] transition-all flex items-center gap-2 font-mono shadow-md"
+                  >
+                    <span>Pre-Order — CA$129</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                )}
                 <button
                   onClick={() => {
                     setSelectedDeckWaitlist(selectedDeck.title);
