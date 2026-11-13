@@ -106,7 +106,7 @@ export const EcosystemSection: React.FC<EcosystemSectionProps> = ({
                   A structured individual-development program across five dimensions: Life & Direction, Career, Health & Energy, Financial Wellbeing, and Connection.
                 </p>
                 <div className="pt-2 text-[11px] text-[#1A1A1A]/60 font-mono">
-                  Process: Assess → Prioritize → Design → Act → Review → Adapt
+                  Process: Assess → Prioritize → Design → Act → Connect → Review → Adapt
                 </div>
               </div>
 
@@ -132,7 +132,7 @@ export const EcosystemSection: React.FC<EcosystemSectionProps> = ({
                   “Reconnect. Refocus. Move forward.”
                 </p>
                 <p className="text-xs text-[#1A1A1A]/80 leading-relaxed">
-                  A 2.5-day men's human-development and alpine connection retreat in the Alberta foothills. Reflection, shared meals, outdoor challenge, and strategic life calibration.
+                  A 2-day men's human-development and alpine connection retreat in the Alberta foothills. Reflection, shared meals, outdoor challenge, and strategic life calibration.
                 </p>
                 <div className="pt-2 text-[11px] text-[#1A1A1A]/60 font-mono">
                   “A basecamp isn’t the destination. It’s where you prepare for the next climb.”
@@ -384,10 +384,10 @@ export const EcosystemSection: React.FC<EcosystemSectionProps> = ({
             </div>
 
             <button
-              onClick={() => onNavigate('insights')}
+              onClick={() => onNavigate('series')}
               className="text-xs font-bold uppercase tracking-wider text-[#2D4F3C] hover:text-[#1A1A1A] flex items-center gap-1.5 transition-colors group"
             >
-              <span>Explore All Insights</span>
+              <span>Explore Mardai Series</span>
               <ArrowRight className="w-3.5 h-3.5 text-[#C27339] group-hover:translate-x-1 transition-transform" />
             </button>
           </div>

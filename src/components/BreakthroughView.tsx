@@ -127,7 +127,7 @@ export const BreakthroughView: React.FC<BreakthroughViewProps> = ({
             <div className="mt-8 flex flex-wrap items-center gap-4 text-xs text-[#1A1A1A]/60">
               <span className="flex items-center gap-1.5 font-bold">
                 <span className="w-2 h-2 rounded-full bg-[#2D4F3C]"></span>
-                Next Cohort: Enrolling Now (Strictly Capped at 15 Seats)
+                Next Cohort: Enrolling Now (Capped at 15 seats · First cohort limited to 3)
               </span>
               <span>•</span>
               <span>Calgary In-Person & Virtual Live</span>
@@ -372,7 +372,7 @@ export const BreakthroughView: React.FC<BreakthroughViewProps> = ({
           </div>
 
           {/* Phase Tabs */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 mb-6">
             {BREAKTHROUGH_PHASES.map((p) => (
               <button
                 key={p.phaseNumber}
@@ -404,7 +404,7 @@ export const BreakthroughView: React.FC<BreakthroughViewProps> = ({
             <div className="lg:col-span-7 space-y-4">
               <div className="flex items-center gap-3">
                 <span className="text-xs font-mono font-bold text-[#C27339]">
-                  Phase 0{currentPhaseData.phaseNumber} of 06
+                  Phase 0{currentPhaseData.phaseNumber} of 07
                 </span>
                 <span className="text-[#1A1A1A]/30">•</span>
                 <span className="text-xs text-[#2D4F3C] uppercase tracking-wider font-bold">

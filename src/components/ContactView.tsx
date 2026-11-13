@@ -224,8 +224,8 @@ export const ContactView: React.FC<ContactViewProps> = ({
                       {[
                         { 
                           id: 'calgary-event', 
-                          label: 'Register for Calgary',
-                          defaultMsg: 'Hello Mardai team,\n\nI would like to register for the upcoming Mardai event in Calgary (From Surviving to Thriving).\n\nPlease let me know the registration steps and details.'
+                          label: 'Calgary Event Waitlist',
+                          defaultMsg: 'Hello Mardai team,\n\nPlease add me to the waitlist for the next Mardai event in Calgary (From Surviving to Thriving — Next date TBC).\n\nPlease notify me as soon as the next date is announced.'
                         },
                         { 
                           id: 'waitlist', 
@@ -309,12 +309,12 @@ export const ContactView: React.FC<ContactViewProps> = ({
                       className="w-full px-4 py-3 bg-white border border-[#1A1A1A]/20 text-xs text-[#1A1A1A] focus:outline-none focus:border-[#2D4F3C]"
                     >
                       <option value="general">General Inquiries & Strategic Advisory</option>
-                      <option value="calgary-event">Register for Calgary / Surviving to Thriving (Nov 8)</option>
+                      <option value="calgary-event">Calgary — Next Date TBC (Join the Waitlist)</option>
                       <option value="waitlist">Join the Priority Waitlist (Edmonton, Toronto, Vancouver, Series)</option>
                       <option value="city-request">Request Mardai in Your City</option>
-                      <option value="community">Join the Mardai Community & Calgary Breakfasts</option>
+                      <option value="community">Join the Mardai Community & Calgary Breakfasts (Monthly Morning Gatherings)</option>
                       <option value="breakthrough">Mardai Breakthrough (Career Acceleration)</option>
-                      <option value="basecamp">Mardai Basecamp (2.5-Day Men's Retreat)</option>
+                      <option value="basecamp">Mardai Basecamp (2-Day Men's Retreat)</option>
                       <option value="series">Mardai Series & Human Systems Decks</option>
                       <option value="workshops">Corporate Workshops & Team Transformation</option>
                       <option value="speaking">Keynotes & Speaking Engagements</option>

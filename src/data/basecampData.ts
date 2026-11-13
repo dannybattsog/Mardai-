@@ -141,7 +141,7 @@ export const BASECAMP_FAQS = [
   },
   {
     q: 'Who attends Mardai Basecamp?',
-    a: 'Our cohorts bring together professionals, business leaders, entrepreneurs, fathers, newcomers, and men navigating career transitions or leadership expansion. Group size is strictly capped at 12–16 participants to ensure intimate, high-trust discussions.'
+    a: 'Our cohorts bring together professionals, business leaders, entrepreneurs, fathers, newcomers, and men navigating career transitions or leadership expansion. Seats are strictly limited to ensure intimate, high-trust discussions.'
   },
   {
     q: 'What do I walk away with after 2 days?',

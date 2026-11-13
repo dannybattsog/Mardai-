@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { PageId } from '../types';
 import { 
   Users, 
@@ -35,22 +35,6 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
   onShowToast,
   onContactWithMessage
 }) => {
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [roleInterest, setRoleInterest] = useState('builder');
-  const [isJoined, setIsJoined] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email || !email.includes('@')) {
-      onShowToast('Invalid Email', 'Please provide a valid email address.', 'error');
-      return;
-    }
-    setIsJoined(true);
-    onShowToast('Community Request Dispatched', `Thank you, ${name || 'friend'}! Your invitation request has been routed to connect@mardai.ca. An advisor will reach out to ${email} with details.`, 'success');
-    setEmail('');
-    setName('');
-  };
 
   const communityRoles = [
     {
@@ -80,7 +64,7 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
   ];
 
   const communityExperiences = [
-    { title: 'Monthly In-Person Gatherings', desc: 'Structured morning roundtables and evening conversations in Calgary and regional hubs.' },
+    { title: 'Calgary Breakfasts & Monthly Gatherings', desc: 'Calgary Breakfasts: monthly morning gatherings in Calgary, alongside evening conversations in regional hubs.' },
     { title: 'Alumni Reunions & Events', desc: 'Dedicated gatherings for graduates of Basecamp, Breakthrough, and organizational workshops.' },
     { title: 'Professional Networking', desc: 'High-trust, unpretentious relationship building without transactional elevator pitches.' },
     { title: 'Peer Accountability Partnerships', desc: '1-on-1 pairings and small 4-person pods meeting bi-weekly to sustain 90-day momentum.' },
@@ -140,20 +124,21 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
 
             {/* Hero Quick Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-6">
-              <a
-                href="#join-community-form"
+              <button
+                type="button"
+                onClick={() => onNavigate('breakthrough')}
                 className="px-6 py-3.5 bg-[#1A1A1A] hover:bg-[#2D4F3C] text-white text-xs font-bold uppercase tracking-[0.15em] transition-colors inline-flex items-center gap-2"
               >
-                <span>Join the Community</span>
+                <span>Explore Mardai Programs</span>
                 <ArrowRight className="w-4 h-4 text-[#C27339]" />
-              </a>
+              </button>
               <button
                 type="button"
                 onClick={() => {
                   if (onContactWithMessage) {
                     onContactWithMessage(
                       'community',
-                      'Hello Mardai team,\n\nI would like to connect with the Mardai Community and learn about upcoming monthly gatherings, roundtables, and membership in Calgary and across Canada.'
+                      'Hello Mardai team,\n\nI would like to connect with the Mardai Community and learn about upcoming monthly gatherings, Calgary Breakfasts, and program pathways.'
                     );
                   } else {
                     onNavigate('contact');
@@ -256,115 +241,96 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
         </div>
       </section>
 
-      {/* JOIN COMMUNITY INVITATION */}
-      <section id="join-community-form" className="py-20 bg-white border-b border-[#1A1A1A]/10 scroll-mt-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-8 sm:p-12 bg-[#F7F5F2] border border-[#1A1A1A]/15 shadow-sm space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#1A1A1A]/10 pb-4">
-              <div>
-                <span className="text-[10px] uppercase tracking-[0.25em] font-black text-[#2D4F3C] block mb-1">
-                  Get Connected
+      {/* PROGRAM PARTICIPANT COMMUNITY ACCESS & EXCLUSIVE PRIORITY OPPORTUNITIES */}
+      <section className="py-20 bg-white border-b border-[#1A1A1A]/10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="p-8 sm:p-12 bg-[#F7F5F2] border border-[#1A1A1A]/15 shadow-sm space-y-8">
+            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-[#1A1A1A]/10 pb-6">
+              <div className="space-y-2 max-w-2xl">
+                <span className="text-[10px] uppercase tracking-[0.25em] font-black text-[#2D4F3C] block">
+                  Participant Continuity &amp; Priority Access
                 </span>
-                <h2 className="text-3xl font-black tracking-tight text-[#1A1A1A]">
-                  Join the Community
+                <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-[#1A1A1A]">
+                  Included for Every Mardai Program Participant
                 </h2>
-                <p className="mt-1 text-xs sm:text-sm text-[#1A1A1A]/70 leading-relaxed">
-                  Whether you are an alumnus of Basecamp, a Breakthrough participant, or a committed professional who resonates with deliberate human development, we invite you to connect.
+                <p className="text-xs sm:text-sm text-[#1A1A1A]/80 leading-relaxed">
+                  There is no separate application or paid membership wall to enter the Mardai Community. Every participant in <strong>Mardai Breakthrough</strong>, <strong>Mardai Basecamp</strong>, <strong>Mardai Events</strong>, and <strong>Organizational Workshops</strong> is automatically welcomed into the community and receives <strong>exclusive priority engagement opportunities</strong>.
                 </p>
               </div>
-              <div className="flex items-center gap-1.5 px-3 py-1 bg-white border border-[#1A1A1A]/15 text-[11px] font-mono text-[#2D4F3C] self-start sm:self-auto shrink-0">
+              <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-[#1A1A1A]/15 text-[11px] font-mono text-[#2D4F3C] self-start shrink-0">
                 <Mail className="w-3.5 h-3.5" />
                 <span>connect@mardai.ca</span>
               </div>
             </div>
 
-            {isJoined ? (
-              <div className="p-6 bg-white border border-[#2D4F3C]/40 text-[#2D4F3C] space-y-2">
-                <div className="flex items-center gap-2 font-bold text-sm">
-                  <CheckCircle2 className="w-5 h-5" />
-                  <span>Invitation Request Received</span>
-                </div>
-                <p className="text-xs text-[#1A1A1A]/80">
-                  Thank you for reaching out. We will send details about our upcoming monthly gathering and community onboarding.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#1A1A1A] block mb-1">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="Your name"
-                      className="w-full p-3 bg-white border border-[#1A1A1A]/20 text-xs focus:outline-none focus:border-[#2D4F3C]"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#1A1A1A] block mb-1">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="your.email@example.com"
-                      className="w-full p-3 bg-white border border-[#1A1A1A]/20 text-xs focus:outline-none focus:border-[#2D4F3C]"
-                    />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                {
+                  title: 'Exclusive Priority Access to Gatherings',
+                  desc: 'First-in reservations for monthly Calgary Breakfasts, intimate roundtables, fireside dialogues, and invitation-only learning salons.'
+                },
+                {
+                  title: 'Early Cohort & Retreat Invitations',
+                  desc: 'Priority seat holds and advance notice for upcoming Mardai Basecamp retreats, Breakthrough cohorts, and city events before public release.'
+                },
+                {
+                  title: 'First-Release Mardai Series Access',
+                  desc: 'Priority previews and early reservation access for upcoming Mardai Series mental model decks and practitioner frameworks.'
+                },
+                {
+                  title: 'High-Trust Alumni & Peer Network',
+                  desc: 'Ongoing 1-on-1 accountability pairings, warm introductions across sectors, and alumni reunions built on shared program foundations.'
+                }
+              ].map((benefit, bIdx) => (
+                <div key={bIdx} className="p-5 bg-white border border-[#1A1A1A]/10 flex items-start gap-3">
+                  <CheckCircle2 className="w-4 h-4 text-[#2D4F3C] shrink-0 mt-0.5" />
+                  <div className="space-y-1">
+                    <h3 className="text-xs sm:text-sm font-black text-[#1A1A1A]">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-xs text-[#1A1A1A]/70 leading-relaxed">
+                      {benefit.desc}
+                    </p>
                   </div>
                 </div>
+              ))}
+            </div>
 
-                <div>
-                  <label className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#1A1A1A] block mb-1">
-                    How do you see yourself participating?
-                  </label>
-                  <select
-                    value={roleInterest}
-                    onChange={(e) => setRoleInterest(e.target.value)}
-                    className="w-full p-3 bg-white border border-[#1A1A1A]/20 text-xs focus:outline-none focus:border-[#2D4F3C]"
-                  >
-                    <option value="builder">As a Builder (working actively on my personal/career development)</option>
-                    <option value="contributor">As a Contributor (sharing ideas, tools & practical knowledge)</option>
-                    <option value="mentor">As a Mentor (sharing experience & guidance)</option>
-                    <option value="connector">As a Connector (introducing people & strengthening community)</option>
-                  </select>
-                </div>
-
-                <div className="pt-2 flex flex-wrap items-center gap-3">
-                  <button
-                    type="submit"
-                    className="w-full sm:w-auto px-8 py-4 bg-[#1A1A1A] hover:bg-[#2D4F3C] text-white text-xs font-bold uppercase tracking-[0.15em] transition-all flex items-center justify-center gap-2"
-                  >
-                    <span>Join the Community</span>
-                    <ArrowRight className="w-4 h-4 text-[#C27339]" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (onContactWithMessage) {
-                        onContactWithMessage(
-                          'community',
-                          'Hello Mardai team,\n\nI would like to join the Mardai Community (monthly breakfast gatherings, roundtables, and practitioner network in Calgary and across Canada).\n\nPlease let me know how to get involved.'
-                        );
-                      } else {
-                        onNavigate('contact');
-                      }
-                    }}
-                    className="w-full sm:w-auto px-6 py-4 bg-white hover:bg-[#F7F5F2] text-[#1A1A1A] border border-[#1A1A1A]/20 text-xs font-bold uppercase tracking-[0.15em] transition-colors flex items-center justify-center gap-2"
-                  >
-                    <Mail className="w-4 h-4 text-[#2D4F3C]" />
-                    <span>Send Us a Message</span>
-                  </button>
-                </div>
-              </form>
-            )}
-
+            <div className="pt-2 flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onClick={() => onNavigate('breakthrough')}
+                className="px-6 py-3.5 bg-[#1A1A1A] hover:bg-[#2D4F3C] text-white text-xs font-bold uppercase tracking-[0.15em] transition-colors inline-flex items-center gap-2"
+              >
+                <span>Explore Breakthrough</span>
+                <ArrowRight className="w-4 h-4 text-[#C27339]" />
+              </button>
+              <button
+                type="button"
+                onClick={() => onNavigate('basecamp')}
+                className="px-6 py-3.5 bg-[#2D4F3C] hover:bg-[#3C6D58] text-white text-xs font-bold uppercase tracking-[0.15em] transition-colors inline-flex items-center gap-2"
+              >
+                <span>Discover Basecamp</span>
+                <ArrowRight className="w-4 h-4 text-[#C27339]" />
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  if (onContactWithMessage) {
+                    onContactWithMessage(
+                      'community',
+                      'Hello Mardai team,\n\nI am interested in learning more about Mardai programs and the exclusive priority engagement opportunities available to participants.'
+                    );
+                  } else {
+                    onNavigate('contact');
+                  }
+                }}
+                className="px-6 py-3.5 bg-white hover:bg-[#F7F5F2] text-[#1A1A1A] border border-[#1A1A1A]/20 text-xs font-bold uppercase tracking-[0.15em] transition-colors inline-flex items-center gap-2"
+              >
+                <Mail className="w-4 h-4 text-[#2D4F3C]" />
+                <span>Send Us a Message</span>
+              </button>
+            </div>
           </div>
         </div>
       </section>

@@ -134,7 +134,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </span>
               <span className="w-1.5 h-1.5 bg-[#2D4F3C] rounded-full"></span>
             </div>
-            <p className="text-[11px] text-[#F7F5F2]/60 mt-1">Nov 8 • Flagship Event</p>
+            <p className="text-[11px] text-[#F7F5F2]/60 mt-1">January 30 Flagship Event</p>
           </div>
 
           <div 
@@ -147,7 +147,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </span>
               <span className="text-[9px] font-mono text-[#C27339] uppercase">Waitlist</span>
             </div>
-            <p className="text-[11px] text-[#F7F5F2]/60 mt-1">Spring 2026</p>
+            <p className="text-[11px] text-[#F7F5F2]/60 mt-1">Spring 2027</p>
           </div>
 
           <div 
@@ -160,7 +160,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </span>
               <span className="text-[9px] font-mono text-[#C27339] uppercase">Waitlist</span>
             </div>
-            <p className="text-[11px] text-[#F7F5F2]/60 mt-1">Spring 2026</p>
+            <p className="text-[11px] text-[#F7F5F2]/60 mt-1">Spring 2027</p>
           </div>
 
           <div 
@@ -173,7 +173,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </span>
               <span className="text-[9px] font-mono text-[#C27339] uppercase">Waitlist</span>
             </div>
-            <p className="text-[11px] text-[#F7F5F2]/60 mt-1">Fall 2026</p>
+            <p className="text-[11px] text-[#F7F5F2]/60 mt-1">Fall 2027</p>
           </div>
         </motion.div>
 

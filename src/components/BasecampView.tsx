@@ -101,11 +101,15 @@ export const BasecampView: React.FC<BasecampViewProps> = ({
               </span>
               <span className="flex items-center gap-1.5 px-3.5 py-2 bg-white/5 border border-white/10 font-bold">
                 <Users className="w-3.5 h-3.5 text-[#2D4F3C]" />
-                Capped at 12–16 Participants
+                Limited Seats
               </span>
               <span className="flex items-center gap-1.5 px-3.5 py-2 bg-white/5 border border-white/10 font-bold">
                 <Calendar className="w-3.5 h-3.5 text-[#C27339]" />
-                Upcoming Dates: Fall 2026 Cohort
+                Upcoming Date: March 2027 Cohort
+              </span>
+              <span className="flex items-center gap-1.5 px-3.5 py-2 bg-white/5 border border-white/10 font-bold">
+                <Utensils className="w-3.5 h-3.5 text-[#2D4F3C]" />
+                All-Inclusive (Lodging &amp; Chef Meals) • Price Upon Inquiry
               </span>
             </div>
 
@@ -274,11 +278,21 @@ export const BasecampView: React.FC<BasecampViewProps> = ({
                 Basecamp blends the natural grandeur of the Canadian Rockies foothills with nourishing chef-prepared meals, quiet reflection walks, fireside dialogue, and rigorous personal development.
               </p>
               
-              <div className="p-6 bg-[#F7F5F2] border border-[#1A1A1A]/10 space-y-2 text-xs text-[#1A1A1A]/80">
-                <span className="font-bold uppercase tracking-wider text-[#2D4F3C] block text-[10px]">
-                  Setting & Comfort:
-                </span>
-                <p>Private/semi-private upscale cabin accommodations in Alberta foothills, all gourmet meals, non-alcoholic craft beverages, retreat journal, and facilitation included.</p>
+              <div className="p-6 bg-[#F7F5F2] border border-[#1A1A1A]/10 space-y-3 text-xs text-[#1A1A1A]/80">
+                <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-[#1A1A1A]/10">
+                  <span className="font-bold uppercase tracking-wider text-[#2D4F3C] block text-[10px]">
+                    All-Inclusive Program &amp; Comfort
+                  </span>
+                  <span className="font-mono font-bold text-[#1A1A1A] text-[11px]">
+                    Price: Upon Inquiry
+                  </span>
+                </div>
+                <p>
+                  Mardai Basecamp is an all-inclusive program with private/semi-private upscale lodging in the Alberta foothills, nourishing chef-prepared meals, non-alcoholic craft beverages, retreat journal, and full facilitation included.
+                </p>
+                <div className="pt-1 text-[11px] font-mono font-bold text-[#C27339]">
+                  Upcoming Date: March 2027 Cohort • Limited Seats
+                </div>
               </div>
             </div>
 
@@ -353,7 +367,7 @@ export const BasecampView: React.FC<BasecampViewProps> = ({
               Ready for the pause before your next climb?
             </h3>
             <p className="text-xs text-[#F7F5F2]/70 max-w-xl leading-relaxed">
-              Basecamp cohorts are strictly capped at 12–16 participants to ensure conversational depth and personal connection. Reserve your spot for the upcoming Rockies retreat.
+              Basecamp cohorts have limited seats to ensure conversational depth and personal connection. This all-inclusive program includes lodging and chef-prepared meals—price upon inquiry for the Upcoming Date: March 2027 Cohort.
             </p>
             <div className="pt-2">
               <button
@@ -374,12 +388,13 @@ export const BasecampView: React.FC<BasecampViewProps> = ({
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <ProgramContactForm
             programTitle="Mardai Basecamp"
-            subtitle="Questions regarding cabin accommodations, retreat logistics in the Kananaskis foothills, physical requirements, or cohort composition? Reach our retreat hosts directly via connect@mardai.ca."
-            defaultTopic="Retreat Dates & Accommodation"
+            subtitle="Questions regarding pricing (upon inquiry), all-inclusive lodging and chef-prepared meals, the March 2027 Cohort in the Kananaskis foothills, or cohort composition? Reach our retreat hosts directly via connect@mardai.ca."
+            defaultTopic="Mardai Basecamp (2-Day Men's Retreat)"
             topicOptions={[
-              { label: 'Retreat Dates & Foothills Lodge Accommodation', value: 'Retreat Dates & Foothills Lodge Accommodation' },
-              { label: 'Cohort Dynamics & Attendee Profile (Men’s Retreat)', value: 'Cohort Dynamics & Attendee Profile (Men’s Retreat)' },
-              { label: 'Dietary & Logistics Questions', value: 'Dietary & Logistics Questions' },
+              { label: "Mardai Basecamp (2-Day Men's Retreat) — Program & Pricing Upon Inquiry", value: "Mardai Basecamp (2-Day Men's Retreat)" },
+              { label: 'Upcoming Date (March 2027 Cohort) & All-Inclusive Lodging', value: 'Upcoming Date (March 2027 Cohort) & All-Inclusive Lodging' },
+              { label: 'Cohort Dynamics & Attendee Profile (2-Day Men’s Retreat)', value: 'Cohort Dynamics & Attendee Profile (2-Day Men’s Retreat)' },
+              { label: 'Dietary & Chef-Prepared Meals Questions', value: 'Dietary & Chef-Prepared Meals Questions' },
               { label: 'Private Executive / Corporate Retreat Inquiries', value: 'Private Executive / Corporate Retreat Inquiries' },
               { label: 'General Basecamp Questions', value: 'General Basecamp Questions' }
             ]}

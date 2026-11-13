@@ -234,14 +234,6 @@ export function App() {
           />
         )}
 
-        {currentPage === 'insights' && (
-          <SeriesView 
-            onNavigate={handleNavigate}
-            onShowToast={showToast}
-            onOpenBasecampReview={() => handleOpenModal('basecamp-review')}
-          />
-        )}
-
         {currentPage === 'contact' && (
           <ContactView 
             onNavigate={handleNavigate}

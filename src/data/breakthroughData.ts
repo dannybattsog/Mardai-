@@ -90,17 +90,33 @@ export const BREAKTHROUGH_PHASES: BreakthroughPhase[] = [
   },
   {
     phaseNumber: 6,
-    stepName: 'REVIEW & ADAPT',
-    title: 'Measure Change & Begin the Next Cycle',
-    focus: 'Conducting structured milestone reviews to celebrate measurable growth, evaluate second-order outcomes, and calibrate the next climb.',
+    stepName: 'REVIEW',
+    title: 'Measure What Changed',
+    focus: 'Conducting structured milestone reviews to evaluate tangible outcomes, behavioral shifts, and second-order effects against your original baseline.',
     deliverables: [
       '90-Day Retrospective & Baseline Comparison',
-      'Lessons Learned & Systems Refinement',
-      'Next Horizon Development Roadmap'
+      'Objective Progress & Friction Audit',
+      'Blind-Spot & Breakthrough Identification'
     ],
     tools: [
       'Progress Retrospective Template',
+      '5-Dimension Delta Scorecard',
+      'Outcome & Consequence Audit'
+    ]
+  },
+  {
+    phaseNumber: 7,
+    stepName: 'ADAPT',
+    title: 'Begin the Next Development Cycle',
+    focus: 'Integrating lessons learned, refining your personal operating system, and orienting toward the next 90-day climb with compounded momentum.',
+    deliverables: [
+      'Refined Operating System & Decision Rules',
+      'Next Horizon Development Priority Selection',
+      'Continuous Development Cadence Handoff'
+    ],
+    tools: [
       'Cycle Calibrator',
+      'Next-Horizon Roadmap Builder',
       'Continuous Development Log'
     ]
   }

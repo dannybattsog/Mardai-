@@ -11,6 +11,7 @@ import {
   Globe,
   Mail
 } from 'lucide-react';
+import { LegalModal, LegalDocType } from './LegalModal';
 
 interface FooterProps {
   onNavigate: (page: PageId) => void;
@@ -24,6 +25,7 @@ export const Footer: React.FC<FooterProps> = ({
   onShowToast
 }) => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [activeLegalDoc, setActiveLegalDoc] = useState<LegalDocType | null>(null);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -167,14 +169,6 @@ export const Footer: React.FC<FooterProps> = ({
               </li>
               <li>
                 <button 
-                  onClick={() => onNavigate('insights')}
-                  className="text-[#F7F5F2]/70 hover:text-white transition-colors"
-                >
-                  Mardai Insights
-                </button>
-              </li>
-              <li>
-                <button 
                   onClick={() => onNavigate('contact')}
                   className="text-[#F7F5F2]/70 hover:text-white transition-colors"
                 >
@@ -276,19 +270,22 @@ export const Footer: React.FC<FooterProps> = ({
 
           <div className="flex items-center gap-6">
             <button 
-              onClick={() => onShowToast('Privacy Policy', 'Mardai respects participant confidentiality and personal data integrity.')}
+              type="button"
+              onClick={() => setActiveLegalDoc('privacy')}
               className="hover:text-white transition-colors"
             >
               Privacy Policy
             </button>
             <button 
-              onClick={() => onShowToast('Terms of Engagement', 'Standard educational, development, and retreat engagement terms.')}
+              type="button"
+              onClick={() => setActiveLegalDoc('terms')}
               className="hover:text-white transition-colors"
             >
               Terms of Engagement
             </button>
             <button 
-              onClick={() => onShowToast('Accessibility Statement', 'Mardai is committed to accessible, inclusive experiences.')}
+              type="button"
+              onClick={() => setActiveLegalDoc('accessibility')}
               className="hover:text-white transition-colors"
             >
               Accessibility
@@ -297,6 +294,14 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
       </div>
+
+      {/* Legal & Accessibility Pop-up Window */}
+      <LegalModal
+        isOpen={activeLegalDoc !== null}
+        docType={activeLegalDoc}
+        onSelectDoc={(doc) => setActiveLegalDoc(doc)}
+        onClose={() => setActiveLegalDoc(null)}
+      />
     </footer>
   );
 };

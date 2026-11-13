@@ -57,7 +57,7 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
       case 'basecamp':
         return {
           title: 'Join the Next Mardai Basecamp',
-          subtitle: '2.5-Day Men\'s Reflection & Leadership Experience (Calgary / Rockies)',
+          subtitle: '2-Day Men\'s Reflection & Leadership Experience (Calgary / Rockies)',
           badge: 'Executive Retreat',
           icon: Mountain,
           cta: 'Reserve Basecamp Consideration',

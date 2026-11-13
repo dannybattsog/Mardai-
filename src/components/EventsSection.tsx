@@ -122,7 +122,7 @@ export const EventsSection: React.FC<EventsSectionProps> = ({
                         </span>
                       ) : (
                         <span className="px-2.5 py-1 bg-[#C27339] text-white font-mono text-[10px] font-bold uppercase tracking-wider">
-                          Coming Soon
+                          {event.city === 'Calgary' ? 'Next Date TBC • Waitlist' : 'Priority Waitlist'}
                         </span>
                       )}
                     </div>
@@ -209,7 +209,11 @@ export const EventsSection: React.FC<EventsSectionProps> = ({
                       onClick={() => onSelectEvent(event, 'waitlist')}
                       className="w-full py-3.5 px-6 bg-white hover:bg-[#1A1A1A] text-[#1A1A1A] hover:text-white border border-[#1A1A1A] text-xs font-bold uppercase tracking-[0.16em] transition-all flex items-center justify-center gap-2 group/btn"
                     >
-                      <span>Join the Waitlist</span>
+                      <span>
+                        {event.city === 'Calgary'
+                          ? 'Calgary — Next date TBC — Join the waitlist'
+                          : `${event.date} — Join the priority waitlist`}
+                      </span>
                       <ChevronRight className="w-4 h-4 text-[#C27339] group-hover/btn:translate-x-1 transition-transform" />
                     </button>
                   )}

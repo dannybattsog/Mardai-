@@ -100,7 +100,7 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5">
           {navItems.map((item) => {
-            const isActive = currentPage === item.id || (item.id === 'series' && (currentPage === 'series' || currentPage === 'beyond' || currentPage === 'insights'));
+            const isActive = currentPage === item.id || (item.id === 'series' && (currentPage === 'series' || currentPage === 'beyond'));
             return (
               <button
                 key={item.id}
