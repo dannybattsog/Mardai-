@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { sendFormEmail } from '../lib/formDelivery';
 import { PageId } from '../types';
 import { 
   Mail, 
@@ -47,10 +48,20 @@ export const ContactView: React.FC<ContactViewProps> = ({
     setTimeout(() => setCopiedEmail(false), 2500);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !email.includes('@')) {
       onShowToast('Invalid Email', 'Please provide a valid email address.', 'error');
+      return;
+    }
+    const sent = await sendFormEmail(`Website Inquiry: ${topic}`, {
+      Name: name,
+      Email: email,
+      Topic: topic,
+      Message: message,
+    });
+    if (!sent) {
+      onShowToast('Could Not Send', 'Your message could not be delivered. Please email connect@mardai.ca directly.', 'error');
       return;
     }
     setIsSent(true);

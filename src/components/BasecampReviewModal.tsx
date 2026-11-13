@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { sendFormEmail } from '../lib/formDelivery';
 import { BASECAMP_REVIEW_DIMENSIONS } from '../data/basecampReviewData';
 import { PageId } from '../types';
 import { 
@@ -98,14 +99,25 @@ export const BasecampReviewModal: React.FC<BasecampReviewModalProps> = ({
 
   const recommendedPathway = getRecommendedPathway();
 
-  const handleSaveAndEmail = (e: React.FormEvent) => {
+  const handleSaveAndEmail = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !email.includes('@')) {
       onShowToast('Invalid Email', 'Please enter a valid email address.', 'error');
       return;
     }
+    const sent = await sendFormEmail('Breakthrough Diagnostic — 90-Day Review', {
+      Name: name,
+      Email: email,
+      ...Object.fromEntries(
+        Object.entries(scores).map(([key, value]) => [`Score — ${key}`, String(value)])
+      ),
+    });
+    if (!sent) {
+      onShowToast('Could Not Send', 'Your review could not be delivered. Please email connect@mardai.ca directly.', 'error');
+      return;
+    }
     setIsSubmitted(true);
-    onShowToast('Breakthrough Diagnostic Sent', `Your 90-day personal scorecard and review roadmap has been sent to ${email}`, 'success');
+    onShowToast('Breakthrough Diagnostic Sent', `Your 90-day review has been sent to the Mardai team. They will follow up at ${email} with your personal scorecard and roadmap.`, 'success');
   };
 
   const handleReset = () => {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { sendFormEmail } from '../lib/formDelivery';
 import { Mail, Send, CheckCircle2, Copy, Check, Clock, ShieldCheck, ArrowRight } from 'lucide-react';
 
 interface ProgramContactFormProps {
@@ -36,7 +37,7 @@ export const ProgramContactForm: React.FC<ProgramContactFormProps> = ({
     setTimeout(() => setCopiedEmail(false), 2500);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !email.includes('@')) {
       onShowToast('Invalid Email', 'Please provide a valid email address.', 'error');
@@ -48,15 +49,24 @@ export const ProgramContactForm: React.FC<ProgramContactFormProps> = ({
     }
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSent(true);
-      onShowToast(
-        'Inquiry Sent',
-        `Your message regarding ${programTitle} has been routed to connect@mardai.ca. An advisor will respond within 24 hours.`,
-        'success'
-      );
-    }, 500);
+    const sent = await sendFormEmail(`[${programTitle}] ${topic}`, {
+      Name: name,
+      Email: email,
+      Organization: organization,
+      Topic: topic,
+      Message: message,
+    });
+    setIsSubmitting(false);
+    if (!sent) {
+      onShowToast('Could Not Send', 'Your inquiry could not be delivered. Please email connect@mardai.ca directly.', 'error');
+      return;
+    }
+    setIsSent(true);
+    onShowToast(
+      'Inquiry Sent',
+      `Your message regarding ${programTitle} has been routed to connect@mardai.ca. An advisor will respond within 24 hours.`,
+      'success'
+    );
   };
 
   const handleReset = () => {

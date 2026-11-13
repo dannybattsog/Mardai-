@@ -18,6 +18,9 @@ import { WorkshopsView } from './components/WorkshopsView';
 import { CommunityView } from './components/CommunityView';
 import { AboutView } from './components/AboutView';
 import { ContactView } from './components/ContactView';
+import { PrivacyPolicyView } from './components/PrivacyPolicyView';
+import { TermsOfEngagementView } from './components/TermsOfEngagementView';
+import { AccessibilityView } from './components/AccessibilityView';
 
 // Modals & Notifications
 import { EventRegistrationModal } from './components/EventRegistrationModal';
@@ -232,6 +235,18 @@ export function App() {
             onNavigate={handleNavigate}
             onOpenBasecampReview={() => handleOpenModal('basecamp-review')}
           />
+        )}
+
+        {currentPage === 'privacy' && (
+          <PrivacyPolicyView onNavigate={handleNavigate} />
+        )}
+
+        {currentPage === 'terms' && (
+          <TermsOfEngagementView onNavigate={handleNavigate} />
+        )}
+
+        {currentPage === 'accessibility' && (
+          <AccessibilityView onNavigate={handleNavigate} />
         )}
 
         {currentPage === 'contact' && (

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { sendFormEmail } from '../lib/formDelivery';
 import { MardaiEvent, EventRegistrationData } from '../types';
 import { 
   X, 
@@ -52,16 +53,40 @@ export const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
 
   const isWaitlist = mode === 'waitlist' || event.status === 'coming_soon';
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.firstName || !formData.lastName || !formData.email) {
       onShowToast('Required Fields', 'Please provide your first name, last name, and email.', 'error');
       return;
     }
+    const sent = await sendFormEmail(
+      isWaitlist
+        ? `Event Waitlist — Mardai ${event.city}`
+        : `Event Registration — Mardai ${event.city}`,
+      {
+        'First Name': formData.firstName,
+        'Last Name': formData.lastName,
+        Email: formData.email,
+        Phone: formData.phone,
+        'Career Stage': formData.careerStage,
+        Industry: formData.industry,
+        'Current Situation': formData.currentProfessionalSituation,
+        'Main Reason': formData.mainReasonForAttending,
+        'Priority Topic': formData.priorityTopic,
+        'Referral Source': formData.referralSource,
+        LinkedIn: formData.linkedIn,
+      }
+    );
+    if (!sent) {
+      onShowToast('Could Not Send', 'Your registration could not be delivered. Please email connect@mardai.ca directly.', 'error');
+      return;
+    }
     setSubmitted(true);
     onShowToast(
       isWaitlist ? 'Added to Priority Waitlist' : 'Registration Confirmed',
-      `Welcome to Mardai ${event.city}. Check ${formData.email} for your confirmation pack.`,
+      isWaitlist
+        ? `You're on the priority waitlist for Mardai ${event.city}. The team will email ${formData.email} when registration opens.`
+        : `Thank you — you're registered for Mardai ${event.city}. The team will confirm your spot by email at ${formData.email}.`,
       'success'
     );
   };

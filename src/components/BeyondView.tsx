@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { sendFormEmail } from '../lib/formDelivery';
 import { INSIGHT_CATEGORIES, INSIGHT_ITEMS } from '../data/beyondInsightsData';
 import { InsightCategory, InsightItem, PageId } from '../types';
 import { 
@@ -42,10 +43,18 @@ export const BeyondView: React.FC<BeyondViewProps> = ({
     return matchesCategory && matchesSearch;
   });
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newsletterEmail || !newsletterEmail.includes('@')) {
       onShowToast('Invalid Email', 'Please provide a valid email address.', 'error');
+      return;
+    }
+    const sent = await sendFormEmail('Newsletter Signup — Mardai Beyond', {
+      Email: newsletterEmail,
+      Source: 'Beyond / Insights newsletter',
+    });
+    if (!sent) {
+      onShowToast('Could Not Subscribe', 'Something went wrong. Please try again or email connect@mardai.ca directly.', 'error');
       return;
     }
     onShowToast('Subscribed to Beyond', 'You will receive ideas worth applying directly in your inbox.', 'success');

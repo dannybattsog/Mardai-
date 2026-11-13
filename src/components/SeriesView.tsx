@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { sendFormEmail } from '../lib/formDelivery';
 import { motion } from 'framer-motion';
 import { 
   Sparkles, 
@@ -44,7 +45,7 @@ export const SeriesView: React.FC<SeriesViewProps> = ({
   const selectedDeck = MARDAI_SERIES_DECKS.find(d => d.id === selectedDeckId) || MARDAI_SERIES_DECKS[0];
   const activeStep = CARD_ANATOMY_STEPS.find(s => s.id === activeStepId) || CARD_ANATOMY_STEPS[0];
 
-  const handleWaitlistSubmit = (e: React.FormEvent) => {
+  const handleWaitlistSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!emailInput || !emailInput.includes('@')) {
       onShowToast('Invalid Email', 'Please enter a valid email address to join the priority list.', 'warning');
@@ -52,15 +53,21 @@ export const SeriesView: React.FC<SeriesViewProps> = ({
     }
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      onShowToast(
-        'Priority Waitlist Confirmed',
-        `You are on the priority notification list for ${selectedDeckWaitlist}. You will receive launch announcements and preview models.`,
-        'success'
-      );
-      setEmailInput('');
-    }, 600);
+    const sent = await sendFormEmail(`Series Waitlist — ${selectedDeckWaitlist}`, {
+      Email: emailInput,
+      Deck: selectedDeckWaitlist,
+    });
+    setIsSubmitting(false);
+    if (!sent) {
+      onShowToast('Could Not Join', 'Something went wrong. Please try again or email connect@mardai.ca directly.', 'error');
+      return;
+    }
+    onShowToast(
+      'Priority Waitlist Confirmed',
+      `You are on the priority notification list for ${selectedDeckWaitlist}. You will receive launch announcements and preview models.`,
+      'success'
+    );
+    setEmailInput('');
   };
 
   const getDeckIcon = (id: string) => {

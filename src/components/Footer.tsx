@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { sendFormEmail } from '../lib/formDelivery';
 import { PageId } from '../types';
 import { 
   ArrowRight, 
@@ -11,7 +12,6 @@ import {
   Globe,
   Mail
 } from 'lucide-react';
-import { LegalModal, LegalDocType } from './LegalModal';
 
 interface FooterProps {
   onNavigate: (page: PageId) => void;
@@ -25,12 +25,19 @@ export const Footer: React.FC<FooterProps> = ({
   onShowToast
 }) => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
-  const [activeLegalDoc, setActiveLegalDoc] = useState<LegalDocType | null>(null);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newsletterEmail || !newsletterEmail.includes('@')) {
       onShowToast('Invalid Email', 'Please enter a valid email address.', 'error');
+      return;
+    }
+    const sent = await sendFormEmail('Newsletter Signup — Mardai Series', {
+      Email: newsletterEmail,
+      Source: 'Footer newsletter',
+    });
+    if (!sent) {
+      onShowToast('Could Not Subscribe', 'Something went wrong. Please try again or email connect@mardai.ca directly.', 'error');
       return;
     }
     onShowToast('Subscribed to Mardai Series', `You'll receive our monthly frameworks, mental models, and deck updates at ${newsletterEmail}`, 'success');
@@ -270,22 +277,19 @@ export const Footer: React.FC<FooterProps> = ({
 
           <div className="flex items-center gap-6">
             <button 
-              type="button"
-              onClick={() => setActiveLegalDoc('privacy')}
+              onClick={() => onNavigate('privacy')}
               className="hover:text-white transition-colors"
             >
               Privacy Policy
             </button>
             <button 
-              type="button"
-              onClick={() => setActiveLegalDoc('terms')}
+              onClick={() => onNavigate('terms')}
               className="hover:text-white transition-colors"
             >
               Terms of Engagement
             </button>
             <button 
-              type="button"
-              onClick={() => setActiveLegalDoc('accessibility')}
+              onClick={() => onNavigate('accessibility')}
               className="hover:text-white transition-colors"
             >
               Accessibility
@@ -295,13 +299,6 @@ export const Footer: React.FC<FooterProps> = ({
 
       </div>
 
-      {/* Legal & Accessibility Pop-up Window */}
-      <LegalModal
-        isOpen={activeLegalDoc !== null}
-        docType={activeLegalDoc}
-        onSelectDoc={(doc) => setActiveLegalDoc(doc)}
-        onClose={() => setActiveLegalDoc(null)}
-      />
     </footer>
   );
 };

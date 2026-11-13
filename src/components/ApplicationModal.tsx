@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { sendFormEmail } from '../lib/formDelivery';
 import { 
   X, 
   ArrowRight, 
@@ -87,10 +88,25 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
   const info = getTitleAndDetails();
   const Icon = info.icon;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email) {
       onShowToast('Missing Fields', 'Please provide your name and email address.', 'error');
+      return;
+    }
+    const sent = await sendFormEmail(`Program Application — ${activeType}`, {
+      Name: formData.name,
+      Email: formData.email,
+      Phone: formData.phone,
+      Company: formData.company,
+      Role: formData.role,
+      Experience: formData.experienceYears,
+      'Primary Goal': formData.primaryGoal,
+      'Preferred Date': formData.preferredDate,
+      Notes: formData.notes,
+    });
+    if (!sent) {
+      onShowToast('Could Not Send', 'Your application could not be delivered. Please email connect@mardai.ca directly.', 'error');
       return;
     }
     setIsSubmitted(true);

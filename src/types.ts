@@ -8,6 +8,9 @@ export type PageId =
   | 'workshops' 
   | 'community' 
   | 'about' 
+  | 'privacy'
+  | 'terms'
+  | 'accessibility'
   | 'contact';
 
 export interface MardaiSeriesDeck {
