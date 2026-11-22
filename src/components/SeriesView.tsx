@@ -42,7 +42,7 @@ export const SeriesView: React.FC<SeriesViewProps> = ({
   const [selectedDeckId, setSelectedDeckId] = useState<string>('human-systems');
   const [activeStepId, setActiveStepId] = useState<string>('understand');
   const [emailInput, setEmailInput] = useState('');
-  const [selectedDeckWaitlist, setSelectedDeckWaitlist] = useState('Mardai Human Systems (First Release)');
+  const [selectedDeckWaitlist, setSelectedDeckWaitlist] = useState('Mardai Human Systems');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const selectedDeck = MARDAI_SERIES_DECKS.find(d => d.id === selectedDeckId) || MARDAI_SERIES_DECKS[0];
@@ -88,17 +88,17 @@ export const SeriesView: React.FC<SeriesViewProps> = ({
     <div className="min-h-screen bg-[#F7F5F2] pt-24 pb-28 text-[#1A1A1A]">
       
       {/* 1. HERO HEADER */}
-      <section className="relative overflow-hidden border-b border-[#1A1A1A]/10 bg-[#0F2338] text-white py-20 lg:py-28">
+      <section className="relative overflow-hidden border-b border-[#1A1A1A]/10 bg-[#0F2338] text-white py-14 lg:py-20">
         <div className="absolute inset-0 bg-subtle-grid-dark opacity-40"></div>
         
         {/* Subtle decorative glow */}
         <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#C27339]/15 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl mb-12">
+          <div className="max-w-3xl">
             
             {/* Eyebrow badge */}
-            <div className="inline-flex items-center gap-2 mb-6">
+            <div className="inline-flex items-center gap-2 mb-5">
               <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] font-black text-[#D4AF37] bg-white/10 px-3.5 py-1.5 border border-white/15">
                 The Mardai Series Collection
               </span>
@@ -109,7 +109,7 @@ export const SeriesView: React.FC<SeriesViewProps> = ({
             </div>
 
             {/* Master Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.02] mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.02] mb-5">
               Five collections.<br />
               500 models.<br />
               <span className="text-[#D4AF37] font-editorial italic font-normal">
@@ -118,11 +118,11 @@ export const SeriesView: React.FC<SeriesViewProps> = ({
             </h1>
 
             {/* Lead Narrative */}
-            <p className="text-lg sm:text-xl font-light text-[#F7F5F2]/90 leading-relaxed mb-6">
+            <p className="text-lg sm:text-xl font-light text-[#F7F5F2]/90 leading-relaxed mb-5">
               The Mardai Series Collection is a premium collection of practical thinking tools designed to help people understand themselves, make better decisions, navigate complexity, build meaningful relationships, and shape their futures with intention.
             </p>
 
-            <p className="text-sm sm:text-base text-white/75 leading-relaxed font-normal mb-8">
+            <p className="text-sm sm:text-base text-white/75 leading-relaxed font-normal mb-7">
               Each collection brings together 100 carefully selected frameworks, mental models, and practical principles from disciplines such as psychology, business, leadership, strategy, behavioural science, and human development.
             </p>
 
@@ -136,59 +136,157 @@ export const SeriesView: React.FC<SeriesViewProps> = ({
               </span>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Luxury Card Decks Visual Showcase */}
-          <div className="relative mt-12 pt-8 border-t border-white/10">
-            <div 
-              style={{ backgroundColor: '#17375E' }}
-              className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 bg-[#17375E] border border-white/15 p-4 sm:p-8 rounded-xs backdrop-blur-md"
-            >
-              <div className="w-full lg:w-3/5 overflow-hidden shadow-2xl border border-white/20 group">
+      {/* 1B. SPOTLIGHT: MARDAI HUMAN SYSTEMS (COLLECTION 01) */}
+      <section className="bg-[#17375E] text-white border-b border-white/10 py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* Product Imagery */}
+            <div className="lg:col-span-6">
+              <div className="overflow-hidden shadow-2xl border border-white/20 bg-[#0F2338] group">
                 <img 
                   src={seriesCollectionImg} 
-                  alt="Mardai Series Collection - 5 Boxed Mental Model Card Decks" 
+                  alt="Mardai Human Systems - First Edition Boxed Mental Model Card Deck" 
                   className="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
                 />
               </div>
+            </div>
 
-              <div className="w-full lg:w-2/5 space-y-5 text-left">
-                <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#D4AF37]/20 border border-[#D4AF37]/40 text-[#D4AF37] text-[10px] font-mono uppercase tracking-widest font-bold">
-                  First Release Out Soon
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight">
+            {/* Spotlight Content & Buy CTA */}
+            <div className="lg:col-span-6 space-y-5 text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#D4AF37]/20 border border-[#D4AF37]/50 text-[#D4AF37] text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] font-bold">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>First Release — Pre-Order Open</span>
+              </div>
+
+              <div>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.05]">
                   Mardai Human Systems
-                </h3>
-                <p className="text-sm font-light text-white/80 leading-relaxed">
-                  100 models FOR LIFE, WORK & HUMAN CONNECTION. The foundational deck is currently in final production. Pre-order reservation guarantees first-edition boxed shipment.
+                </h2>
+                <p className="text-lg sm:text-xl font-editorial italic text-[#D4AF37] mt-1.5">
+                  "Understand yourself. Understand the world."
                 </p>
+              </div>
 
-                <div className="pt-2 space-y-3">
+              <p className="text-sm sm:text-base font-light text-white/85 leading-relaxed">
+                100 frameworks designed to help you think better, make better decisions, understand yourself and others to lead a fulfilling life and career. Currently in final production — pre-order guarantees first-edition boxed shipment.
+              </p>
+
+              {/* What's in the box */}
+              <div className="p-4 bg-[#0F2338]/75 border border-white/15 space-y-1.5">
+                <span className="text-[10px] font-mono uppercase tracking-[0.22em] font-bold text-[#D4AF37] block">
+                  What's in the box
+                </span>
+                <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
+                  Beautifully designed 100 thick matte linen cards, wooden card holder, AI prompts instructions.
+                </p>
+              </div>
+
+              {/* Price + Big Gold Buy Button */}
+              <div className="pt-1 space-y-3">
+                <div className="flex items-baseline gap-3">
+                  <span className="text-3xl sm:text-4xl font-black font-mono text-white tracking-tight">
+                    CA$129.00
+                  </span>
+                  <span className="text-xs font-mono uppercase tracking-widest text-white/60">
+                    Collection 01 • First Edition
+                  </span>
+                </div>
+
+                <div>
                   <a
                     href={STRIPE_HUMAN_SYSTEMS_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2.5 bg-[#D4AF37] hover:bg-[#bfa035] text-[#0A2540] px-6 py-3 text-xs font-black uppercase tracking-[0.16em] transition-all font-mono shadow-md"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#D4AF37] hover:bg-[#c5a12f] text-[#0A2540] px-8 py-4 text-sm font-black uppercase tracking-[0.16em] transition-all font-mono shadow-xl"
                   >
                     <span>Pre-Order Now — CA$129</span>
                     <ArrowRight className="w-4 h-4" />
                   </a>
-                  <p className="text-[11px] font-mono text-white/60">
-                    One-time payment · Secure checkout via Stripe ·{' '}
-                    <a href="#priority-waitlist" className="underline underline-offset-2 hover:text-white">
-                      or join the priority waitlist
-                    </a>
+                </div>
+
+                <p className="text-[11px] font-mono text-white/65">
+                  One-time payment · Secure checkout via Stripe ·{' '}
+                  <a href="#priority-waitlist" className="underline underline-offset-2 hover:text-white">
+                    or join the priority waitlist
+                  </a>
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 1C. COMING SOON: THE OTHER FOUR COLLECTIONS (02–05) */}
+      <section className="py-16 lg:py-20 bg-[#EFECE6] border-b border-[#1A1A1A]/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-10">
+            <div className="inline-flex items-center gap-2 mb-2.5">
+              <span className="text-[10px] font-mono uppercase tracking-[0.25em] font-bold text-[#C27339]">
+                COMING SOON • COLLECTIONS 02–05
+              </span>
+              <span className="w-1.5 h-1.5 bg-[#2D4F3C] rounded-full"></span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-[#1A1A1A] leading-tight">
+              The Next Four Collections in the Series
+            </h2>
+            <p className="text-sm sm:text-base text-[#1A1A1A]/70 mt-2 font-light">
+              Four more 100-model collections are currently in development. Join the priority waitlist to be notified when each collection opens.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {MARDAI_SERIES_DECKS.filter((deck) => deck.status !== 'coming_soon_first').map((deck) => (
+              <div
+                key={deck.id}
+                className="bg-white border border-[#1A1A1A]/15 p-6 flex flex-col justify-between hover:border-[#17375E]/50 hover:shadow-md transition-all"
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-xs font-mono font-black tracking-widest text-[#C27339]">
+                      {deck.number}
+                    </span>
+                    <span className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 bg-[#17375E]/10 text-[#17375E] font-bold">
+                      In Development
+                    </span>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-black text-[#1A1A1A] tracking-tight leading-snug">
+                      {deck.title.replace('Mardai ', '')}
+                    </h3>
+                    <p className="text-sm font-editorial italic text-[#C27339] mt-1.5 leading-snug">
+                      "{deck.subtitle}"
+                    </p>
+                  </div>
+
+                  <p className="text-xs text-[#1A1A1A]/70 font-light leading-relaxed">
+                    {deck.purpose}
                   </p>
                 </div>
 
-                <div className="text-[11px] font-mono text-white/60 flex items-center gap-3 pt-2">
-                  <span>✦ 100 Thick Matte Linen Cards</span>
-                  <span>✦ Gold Foil Box</span>
-                  <span>✦ AI Guided Prompts</span>
+                <div className="mt-6 pt-4 border-t border-[#1A1A1A]/10">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedDeckWaitlist(deck.title);
+                      const el = document.getElementById('priority-waitlist');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    style={{ backgroundColor: '#17375E' }}
+                    className="w-full bg-[#17375E] hover:bg-[#112946] text-white px-4 py-3 text-[11px] font-black uppercase tracking-[0.16em] transition-all flex items-center justify-center gap-2 font-mono"
+                  >
+                    <span>Join Waitlist</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
-
         </div>
       </section>
 
@@ -625,6 +723,27 @@ export const SeriesView: React.FC<SeriesViewProps> = ({
           </p>
 
           <form onSubmit={handleWaitlistSubmit} className="max-w-xl mx-auto space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 px-4 py-2.5 bg-white/5 border border-white/15 text-left">
+              <label htmlFor="waitlist-deck-select" className="text-[10px] font-mono uppercase tracking-widest text-[#D4AF37] font-bold shrink-0">
+                Collection:
+              </label>
+              <select
+                id="waitlist-deck-select"
+                value={selectedDeckWaitlist}
+                onChange={(e) => setSelectedDeckWaitlist(e.target.value)}
+                className="bg-transparent text-white text-xs sm:text-sm font-mono font-bold focus:outline-none cursor-pointer w-full sm:w-auto"
+              >
+                <option value="Mardai Human Systems" className="bg-[#0F2338] text-white">
+                  01 — Mardai Human Systems (First Release)
+                </option>
+                {MARDAI_SERIES_DECKS.filter((deck) => deck.status !== 'coming_soon_first').map((deck) => (
+                  <option key={deck.id} value={deck.title} className="bg-[#0F2338] text-white">
+                    {deck.number} — {deck.title}
+                  </option>
+                ))}
+              </select>
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-3">
               <input
                 type="email"
@@ -651,7 +770,7 @@ export const SeriesView: React.FC<SeriesViewProps> = ({
             </div>
 
             <p className="text-[11px] font-mono text-white/50">
-              No spam. Only product launch alerts, physical card release dates, and sample thinking models.
+              No spam. Only product launch alerts, collection updates, and sample thinking models.
             </p>
           </form>
 
