@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { PageId, ModalState, MardaiEvent } from './types';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
+import { HomeSeriesSpotlight } from './components/HomeSeriesSpotlight';
 import { SurvivingToThrivingSection } from './components/SurvivingToThrivingSection';
 import { EventsSection } from './components/EventsSection';
 import { EventExperienceSection } from './components/EventExperienceSection';
@@ -136,6 +137,9 @@ export function App() {
               }}
               onOpenBasecampReview={() => handleOpenModal('basecamp-review')}
             />
+
+            {/* Mardai Human Systems Pre-Order Spotlight */}
+            <HomeSeriesSpotlight onNavigate={handleNavigate} />
 
             {/* Sections 2 & 3: The World Is Changing (Workshop Dialogue Background) & From Surviving to Thriving (Conference Symposium Background) */}
             <SurvivingToThrivingSection 

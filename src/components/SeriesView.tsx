@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import { MARDAI_SERIES_DECKS, CARD_ANATOMY_STEPS } from '../data/seriesData';
 import seriesCollectionImg from '../assets/images/regenerated_image_1791994218671.png';
+import rockiesHeroImg from '../assets/images/rockies_series_hero_1795476088704.jpg';
 import { ProgramContactForm } from './ProgramContactForm';
 
 // Stripe Payment Link for the Human Systems first-release deck (CA$129, one-time).
@@ -89,7 +90,16 @@ export const SeriesView: React.FC<SeriesViewProps> = ({
       
       {/* 1. HERO HEADER */}
       <section className="relative overflow-hidden border-b border-[#1A1A1A]/10 bg-[#0F2338] text-white py-14 lg:py-20">
-        <div className="absolute inset-0 bg-subtle-grid-dark opacity-40"></div>
+        <div className="absolute inset-0 pointer-events-none">
+          <img
+            src={rockiesHeroImg}
+            alt="Canadian Rockies editorial illustration"
+            referrerPolicy="no-referrer"
+            className="w-full h-full object-cover object-right opacity-85"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0F2338]/95 via-[#0F2338]/65 to-[#0F2338]/20"></div>
+          <div className="absolute inset-0 bg-subtle-grid-dark opacity-30"></div>
+        </div>
         
         {/* Subtle decorative glow */}
         <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#C27339]/15 blur-[120px] rounded-full pointer-events-none"></div>
